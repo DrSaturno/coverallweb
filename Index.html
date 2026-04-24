@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coveralldeco | Revestimientos de Alta Gama</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="scripts/tailwind-config.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="scripts/main.css">
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body class="bg-white overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="glass-header h-20 flex items-center">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="Index.html" class="flex items-center group">
+                <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco"
+                    class="brand-logo transition-transform duration-300 group-hover:scale-105">
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="Index.html"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Inicio</a>
+                <a href="Index.html#servicios"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Servicios</a>
+                <a href="catalog.html"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Catálogo</a>
+                <a href="Index.html#galeria"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Proyectos</a>
+                <a href="Index.html#contacto" class="btn-primary py-2 px-6 text-sm">Contratar</a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <button id="mobile-menu-toggle" class="md:hidden p-2 text-white hover:text-yellow-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-black z-[2000] flex flex-col items-center justify-center p-6 translate-x-full transition-transform duration-500 md:hidden">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 p-2 text-white hover:text-yellow-400">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <nav class="flex flex-col items-center gap-10 text-center">
+                <a href="Index.html"
+                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Inicio</a>
+                <a href="Index.html#servicios"
+                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Servicios</a>
+                <a href="catalog.html"
+                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Catálogo</a>
+                <a href="#contacto"
+                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Contacto</a>
+                <a href="#contacto" class="btn-primary py-5 px-12 text-xl mt-4">Pide Presupuesto</a>
+            </nav>
+            <div class="mt-20 flex gap-6">
+                <!-- Social Icons can go here -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 hero-gradient">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div
+                class="reveal space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left mt-12 lg:mt-0">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-black text-yellow-400 rounded-full text-sm font-bold tracking-wide uppercase border border-yellow-400/20">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                    </span>
+                    Diseño que Transforma
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold leading-[1.1] text-slate-900">
+                    Tu espacio, <br>
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-black to-slate-700">Reimaginado.</span>
+                </h1>
+                <p class="text-xl text-slate-500 max-w-lg leading-relaxed">
+                    Instalamos revestimientos de vinilo premium en tiempo récord. Sin escombros, sin olores y con
+                    acabados que roban suspiros.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4 w-full">
+                    <a href="#contacto" class="btn-primary py-4 px-10 text-lg shadow-2xl">Empezar Proyecto</a>
+                    <a href="catalog.html"
+                        class="inline-flex items-center justify-center gap-2 py-4 px-10 text-lg font-bold bg-black text-yellow-500 border-2 border-black rounded-full hover:bg-slate-900 transition-all shadow-xl">Ver
+                        Catálogo</a>
+                </div>
+            </div>
+            <div class="reveal-scale relative">
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-100 rounded-full blur-[100px] opacity-50">
+                </div>
+                <div
+                    class="relative rounded-[40px] overflow-hidden shadow-2xl skew-y-1 transform hover:skew-y-0 transition-transform duration-700">
+                    <div class="ba-container vertical h-[600px]" id="hero-slider-main">
+                        <!-- After Image (Base/Bottom) -->
+                        <img src="imagenes/l2.png" alt="Después" class="ba-image">
+                        <!-- Before Image (Revealed/Top) -->
+                        <div class="ba-image ba-after" id="hero-after">
+                            <img src="imagenes/l1.jpg" alt="Antes" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Slider Tool -->
+                        <div class="ba-slider" id="hero-slider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 md:py-32 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 mb-6">¿Por qué elegirnos?
+                </h2>
+                <p class="text-lg text-slate-500">Elevamos el estándar del diseño de interiores combinando tecnología de
+                    vanguardia con mano de obra experta.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm hover:shadow-xl transition-all group reveal">
+                    <div
+                        class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-8 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Rapidez Total</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">Renovamos tus ambientes en horas, no días. La
+                        solución perfecta para no frenar tu ritmo de vida.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm hover:shadow-xl transition-all group reveal"
+                    style="transition-delay: 100ms">
+                    <div
+                        class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-8 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300">
+                        <i data-lucide="hammer" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Sin Escombros</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">Olvídate del polvo y el ruido. Instalamos sobre
+                        superficies existentes sin generar suciedad.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm hover:shadow-xl transition-all group reveal"
+                    style="transition-delay: 200ms">
+                    <div
+                        class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-8 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Garantía Real</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">Vinilos de alta durabilidad resistentes al agua y
+                        al desgaste diario, con garantía oficial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Process Section -->
+    <section class="py-20 md:py-32 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+                <span class="text-yellow-600 font-bold uppercase tracking-widest text-sm">Simplificamos tu vida</span>
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 mt-4 mb-6">Tu transformación
+                    en <span class="bg-yellow-400 px-2 italic">3 Pasos</span></h2>
+                <p class="text-xl text-slate-500">Renovar nunca fue tan fácil. Olvídate de las obras largas y costosas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <!-- Step 1 -->
+                <div class="relative reveal flex flex-col items-center text-center">
+                    <div
+                        class="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center text-3xl font-black text-black border-4 border-yellow-400 mb-8 relative z-10">
+                        1</div>
+                    <h3 class="text-2xl font-bold mb-4">Fotos y Medidas</h3>
+                    <p class="text-slate-500">Nos envías fotos del espacio o mueble que quieres renovar y nos das las
+                        medidas aproximadas.</p>
+                    <div class="hidden md:block absolute top-12 left-2/3 w-full h-[2px] bg-slate-100 -z-0"></div>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative reveal flex flex-col items-center text-center">
+                    <div
+                        class="w-24 h-24 bg-black rounded-full flex items-center justify-center text-3xl font-black text-yellow-400 border-4 border-yellow-400 mb-8 relative z-10">
+                        2</div>
+                    <h3 class="text-2xl font-bold mb-4">Elige tu Textura</h3>
+                    <p class="text-slate-500">Te asesoramos para elegir el acabado perfecto de nuestro catálogo premium
+                        importado.</p>
+                    <div class="hidden md:block absolute top-12 left-2/3 w-full h-[2px] bg-slate-100 -z-0"></div>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative reveal flex flex-col items-center text-center">
+                    <div
+                        class="w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center text-3xl font-black text-black mb-8 relative z-10">
+                        3</div>
+                    <h3 class="text-2xl font-bold mb-4">Instalación Express</h3>
+                    <p class="text-slate-500">Nuestro equipo experto instala el revestimiento en tiempo récord, sin
+                        polvo ni ruidos molestos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Before & After Section -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal flex flex-col items-center text-center lg:items-start lg:text-left">
+                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 mb-8 leading-tight">
+                        Mira la <span class="bg-yellow-400 px-2">Magia</span> <br>en Tiempo Real
+                    </h2>
+                    <p class="text-xl text-slate-500 mb-8 leading-relaxed">
+                        Desliza para ver cómo transformamos un ambiente aburrido en un espacio de revista utilizando
+                        solo nuestros revestimientos de alta tecnología.
+                    </p>
+                    <div class="space-y-6">
+                        <p class="font-bold text-slate-900 uppercase text-xs tracking-widest">Elige tu Textura</p>
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="updateBASlide('imagenes/antes.png', this)"
+                                class="ba-opt active w-12 h-12 rounded-xl border-2 border-yellow-400 overflow-hidden transition-all hover:scale-110 active:scale-95 shadow-sm">
+                                <img src="imagenes/antes.png" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="updateBASlide('imagenes/3 (2).png', this)"
+                                class="ba-opt w-12 h-12 rounded-xl border-2 border-transparent overflow-hidden transition-all hover:scale-110 active:scale-95 shadow-sm">
+                                <img src="imagenes/3 (2).png" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="updateBASlide('imagenes/4 (2).png', this)"
+                                class="ba-opt w-12 h-12 rounded-xl border-2 border-transparent overflow-hidden transition-all hover:scale-110 active:scale-95 shadow-sm">
+                                <img src="imagenes/4 (2).png" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="updateBASlide('imagenes/5.png', this)"
+                                class="ba-opt w-12 h-12 rounded-xl border-2 border-transparent overflow-hidden transition-all hover:scale-110 active:scale-95 shadow-sm">
+                                <img src="imagenes/5.png" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="updateBASlide('imagenes/6.png', this)"
+                                class="ba-opt w-12 h-12 rounded-xl border-2 border-transparent overflow-hidden transition-all hover:scale-110 active:scale-95 shadow-sm">
+                                <img src="imagenes/6.png" class="w-full h-full object-cover">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <a href="#contacto" class="btn-primary py-4 px-10">Quiero un cambio así</a>
+                    </div>
+                </div>
+
+                <div class="reveal-scale">
+                    <div class="ba-container" id="ba-main">
+                        <!-- Before Image -->
+                        <img src="imagenes/despues.png" alt="Antes" class="ba-image">
+                        <!-- After Image (Revealed by slider) -->
+                        <div class="ba-image ba-after" id="ba-after">
+                            <img id="ba-after-img" src="imagenes/antes.png" alt="Después"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <!-- Slider Tool -->
+                        <div class="ba-slider" id="ba-slider"></div>
+                        <div
+                            class="absolute top-4 left-4 bg-black/50 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                            Antes</div>
+                        <div
+                            class="absolute top-4 right-4 bg-yellow-500/50 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                            Después</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTAs & Categories (Mini Catalog) -->
+    <section class="py-20 md:py-32 bg-black text-white overflow-hidden">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-8 stagger">
+            <div class="lg:col-span-2 reveal flex flex-col items-center text-center lg:items-start lg:text-left">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold mb-6">Explora Nuestro <span
+                        class="text-yellow-400">Catálogo</span></h2>
+                <p class="text-slate-400 text-lg mb-10 max-w-xl">Desde texturas que imitan el mármol hasta maderas
+                    exóticas y acabados mate industriales. Todo en un solo lugar.</p>
+                <div id="category-showcase-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <a href="catalog.html" class="group block reveal">
+                        <div
+                            class="aspect-square rounded-[32px] overflow-hidden border border-white/10 group-hover:border-yellow-400 transition-all mb-4">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=600"
+                                alt="Maderas"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <h4 class="text-yellow-400 font-black uppercase tracking-widest text-sm text-center">Maderas
+                        </h4>
+                    </a>
+                    <a href="catalog.html" class="group block reveal" style="transition-delay: 100ms">
+                        <div
+                            class="aspect-square rounded-[32px] overflow-hidden border border-white/10 group-hover:border-yellow-400 transition-all mb-4">
+                            <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&q=80&w=600"
+                                alt="Mármoles"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <h4 class="text-yellow-400 font-black uppercase tracking-widest text-sm text-center">Mármoles
+                        </h4>
+                    </a>
+                    <a href="catalog.html" class="group block reveal" style="transition-delay: 200ms">
+                        <div
+                            class="aspect-square rounded-[32px] overflow-hidden border border-white/10 group-hover:border-yellow-400 transition-all mb-4">
+                            <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&q=80&w=600"
+                                alt="Piedras"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <h4 class="text-yellow-400 font-black uppercase tracking-widest text-sm text-center">Piedras
+                        </h4>
+                    </a>
+                    <a href="catalog.html" class="group block reveal" style="transition-delay: 300ms">
+                        <div
+                            class="aspect-square rounded-[32px] overflow-hidden border border-white/10 group-hover:border-yellow-400 transition-all mb-4">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=600"
+                                alt="Diseño"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <h4 class="text-yellow-400 font-black uppercase tracking-widest text-sm text-center">Diseño</h4>
+                    </a>
+                </div>
+                <a href="catalog.html"
+                    class="mt-10 inline-flex items-center gap-3 text-yellow-500 font-bold hover:text-yellow-400 transition-colors">
+                    Ver todas las texturas
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            <div
+                class="bg-yellow-400 rounded-[40px] p-12 flex flex-col justify-center items-center text-center reveal-scale shadow-2xl shadow-yellow-400/10">
+                <span class="text-black/60 uppercase tracking-widest font-black text-sm mb-4">¿Listo para
+                    renovar?</span>
+                <h3 class="text-3xl font-heading font-black text-black mb-6">Pide tu presupuesto sin cargo hoy</h3>
+                <p class="mb-8 text-black/80 font-medium">Nuestro equipo comercial te contactará en menos de 1 hora.</p>
+                <a href="#contacto"
+                    class="w-full bg-black text-yellow-400 py-4 rounded-full font-bold text-lg hover:bg-slate-800 transition-colors">Contactar
+                    ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Locations -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div
+                class="flex flex-col md:flex-row justify-between items-center lg:items-end mb-20 reveal text-center lg:text-left">
+                <div class="max-w-2xl">
+                    <h2
+                        class="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 mb-6 flex flex-col items-center lg:items-start">
+                        <span>Transformamos cada</span>
+                        <span class="bg-yellow-400 px-2">Rincón</span>
+                    </h2>
+                    <p class="text-xl text-slate-500 italic">No hay superficie que se resista a nuestra tecnología de
+                        recubrimiento.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 stagger">
+                <!-- Location 1 -->
+                <div
+                    class="group relative aspect-[3/4] rounded-[32px] overflow-hidden bg-slate-100 shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center p-8">
+                        <h4 class="text-base md:text-2xl font-bold text-white text-center px-2">Baños</h4>
+                    </div>
+                </div>
+                <!-- Location 2 -->
+                <div
+                    class="group relative aspect-[3/4] rounded-[32px] overflow-hidden bg-slate-100 shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center p-8">
+                        <h4 class="text-base md:text-2xl font-bold text-white text-center px-2">Dormitorios</h4>
+                    </div>
+                </div>
+                <!-- Location 3 -->
+                <div
+                    class="group relative aspect-[3/4] rounded-[32px] overflow-hidden bg-slate-100 shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1556912177-c54030639a09?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center p-8">
+                        <h4 class="text-base md:text-2xl font-bold text-white text-center px-2">Cocinas</h4>
+                    </div>
+                </div>
+                <!-- Location 4 -->
+                <div
+                    class="group relative aspect-[3/4] rounded-[32px] overflow-hidden bg-slate-100 shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center p-8">
+                        <h4 class="text-base md:text-2xl font-bold text-white text-center px-2">Living</h4>
+                    </div>
+                </div>
+                <!-- Location 5 -->
+                <div
+                    class="group relative aspect-[3/4] rounded-[32px] overflow-hidden bg-slate-100 shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1506377585622-bedcbb027afc?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-center p-8">
+                        <h4 class="text-base md:text-2xl font-bold text-white text-center px-2">Puertas</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Furniture Section -->
+    <section class="py-16 md:py-24 bg-slate-950 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full opacity-20 hidden lg:block">
+            <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=1200"
+                class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-6 relative z-10 flex justify-center lg:justify-start">
+            <div class="max-w-xl reveal flex flex-col items-center text-center lg:items-start lg:text-left">
+                <span class="text-yellow-400 font-bold uppercase tracking-widest text-sm">Rescate de Mobiliario</span>
+                <h2 class="text-4xl md:text-6xl font-heading font-black mt-4 mb-8">Tus muebles, <br>Evolucionados.</h2>
+                <p class="text-xl text-slate-400 leading-relaxed mb-10">
+                    No los tires, transfórmalos. Nuestra aplicación experta permite renovar mesas, estanterías, alacenas
+                    y escritorios con texturas ultra-realistas que parecen recién salidas de fábrica.
+                </p>
+                <div class="flex gap-4">
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10 flex-1">
+                        <h5 class="text-yellow-400 font-bold mb-2">+100</h5>
+                        <p class="text-xs text-slate-500 uppercase font-black">Combinaciones</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10 flex-1">
+                        <h5 class="text-yellow-400 font-bold mb-2">100%</h5>
+                        <p class="text-xs text-slate-500 uppercase font-black">Personalizable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specific Specialties (Vehicles & Commercial) -->
+    <section class="py-20 md:py-32 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Vehicles -->
+                <div
+                    class="bg-white rounded-[48px] p-12 shadow-sm border border-slate-100 reveal-left flex flex-col items-center text-center lg:items-start lg:text-left">
+                    <div
+                        class="w-16 h-16 lg:w-20 lg:h-20 bg-yellow-400 rounded-3xl flex items-center justify-center mb-10">
+                        <svg class="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-4xl font-heading font-black text-slate-900 mb-6">Movilidad de Alto Nivel</h3>
+                    <p class="text-slate-500 text-lg mb-8 leading-relaxed">
+                        Llevamos nuestra tecnología de wrapping a cielos y mares. Personalizamos interiores de **autos,
+                        helicópteros, motos, barcos y aviones** con materiales certificados.
+                    </p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                        <span
+                            class="px-4 py-2 bg-slate-50 text-slate-700 text-sm font-bold rounded-full">Aeronáutica</span>
+                        <span class="px-4 py-2 bg-slate-50 text-slate-700 text-sm font-bold rounded-full">Náutica</span>
+                        <span
+                            class="px-4 py-2 bg-slate-50 text-slate-700 text-sm font-bold rounded-full">Automotriz</span>
+                    </div>
+                </div>
+                <!-- Commercial -->
+                <div
+                    class="bg-slate-900 rounded-[48px] p-12 shadow-2xl reveal-right text-white flex flex-col items-center text-center lg:items-start lg:text-left">
+                    <div
+                        class="w-16 h-16 lg:w-20 lg:h-20 bg-yellow-400 rounded-3xl flex items-center justify-center mb-10">
+                        <svg class="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-10V4m-5 2h5m-5 4h5m-5 4h5" />
+                        </svg>
+                    </div>
+                    <h3 class="text-4xl font-heading font-black mb-6">Negocios que Impactan</h3>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        Rediseñamos la imagen de **bares, restaurantes, hoteles** y cualquier espacio comercial. Creamos
+                        ambientes memorables que atraen clientes y elevan tu marca.
+                    </p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                        <span class="px-4 py-2 bg-white/10 text-white text-sm font-bold rounded-full">Gastronomía</span>
+                        <span class="px-4 py-2 bg-white/10 text-white text-sm font-bold rounded-full">Hotelería</span>
+                        <span class="px-4 py-2 bg-white/10 text-white text-sm font-bold rounded-full">Retail</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="py-20 md:py-32 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div class="reveal">
+                    <span class="text-yellow-600 font-bold uppercase tracking-widest text-sm">Resolviendo dudas</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 mt-4 mb-8">Preguntas
+                        <br><span class="italic text-yellow-500">Frecuentes</span>
+                    </h2>
+                    <p class="text-xl text-slate-500 mb-10">Todo lo que necesitas saber antes de dar el primer paso
+                        hacia tu nuevo espacio.</p>
+                    <a href="#contacto" class="btn-primary py-4 px-10">Aún tengo dudas</a>
+                </div>
+
+                <div class="space-y-4 stagger">
+                    <div
+                        class="faq-item bg-white rounded-3xl p-8 cursor-pointer shadow-sm hover:shadow-md transition-all">
+                        <div class="flex justify-between items-center text-left">
+                            <h4 class="text-lg font-bold">¿Cuánto tiempo dura la instalación?</h4>
+                            <svg class="faq-icon w-6 h-6 transition-transform flex-shrink-0" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                        <div class="faq-content text-left">
+                            <p class="pt-4 text-slate-500">La mayoría de los proyectos se completan en un solo día. Por
+                                ejemplo, una cocina estándar suele estar lista en 4 a 6 horas.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="faq-item bg-white rounded-3xl p-8 cursor-pointer shadow-sm hover:shadow-md transition-all">
+                        <div class="flex justify-between items-center text-left">
+                            <h4 class="text-lg font-bold">¿Dañan la superficie original?</h4>
+                            <svg class="faq-icon w-6 h-6 transition-transform flex-shrink-0" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                        <div class="faq-content text-left">
+                            <p class="pt-4 text-slate-500">En absoluto. Nuestros vinilos están diseñados para proteger
+                                la superficie. Si decides quitarlos en el futuro, la superficie original estará intacta.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="faq-item bg-white rounded-3xl p-8 cursor-pointer shadow-sm hover:shadow-md transition-all">
+                        <div class="flex justify-between items-center text-left">
+                            <h4 class="text-lg font-bold">¿Es resistente al calor y la humedad?</h4>
+                            <svg class="faq-icon w-6 h-6 transition-transform flex-shrink-0" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                        <div class="faq-content text-left">
+                            <p class="pt-4 text-slate-500">Sí, son materiales de alto tránsito. Soportan perfectamente
+                                la humedad de baños y el calor moderado de las cocinas sin despegarse ni perder color.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Budget Estimator -->
+    <section class="py-20 md:py-32 bg-black text-white">
+        <div class="container mx-auto px-6">
+            <div
+                class="max-w-4xl mx-auto bg-slate-900 rounded-[48px] p-12 md:p-20 border border-white/10 reveal flex flex-col items-center">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-heading font-black mb-6">Calculadora <span
+                            class="text-yellow-400">Express</span></h2>
+                    <p class="text-slate-400 text-lg">Selecciona tu proyecto y obtén un estimado al instante.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 w-full">
+                    <button
+                        class="calc-option p-6 rounded-3xl border border-white/10 hover:border-yellow-400 transition-all flex flex-col items-center gap-4 group"
+                        onclick="selectType('kitchen', 500)">
+                        <span class="text-3xl text-yellow-400 group-hover:scale-110 transition-transform">🍳</span>
+                        <span class="font-bold text-sm">Cocina</span>
+                    </button>
+                    <button
+                        class="calc-option p-6 rounded-3xl border border-white/10 hover:border-yellow-400 transition-all flex flex-col items-center gap-4 group"
+                        onclick="selectType('fridge', 150)">
+                        <span class="text-3xl text-yellow-400 group-hover:scale-110 transition-transform">🧊</span>
+                        <span class="font-bold text-sm">Heladera</span>
+                    </button>
+                    <button
+                        class="calc-option p-6 rounded-3xl border border-white/10 hover:border-yellow-400 transition-all flex flex-col items-center gap-4 group"
+                        onclick="selectType('furniture', 300)">
+                        <span class="text-3xl text-yellow-400 group-hover:scale-110 transition-transform">🛋️</span>
+                        <span class="font-bold text-sm">Muebles</span>
+                    </button>
+                    <button
+                        class="calc-option p-6 rounded-3xl border border-white/10 hover:border-yellow-400 transition-all flex flex-col items-center gap-4 group"
+                        onclick="selectType('car', 1200)">
+                        <span class="text-3xl text-yellow-400 group-hover:scale-110 transition-transform">🚗</span>
+                        <span class="font-bold text-sm">Vehículo</span>
+                    </button>
+                </div>
+
+                <div id="result-display" class="bg-black/40 rounded-3xl p-8 text-center hidden w-full">
+                    <p class="text-slate-400 uppercase tracking-widest text-xs font-black mb-2">Estimado de Inversión
+                    </p>
+                    <span id="price-result" class="text-5xl md:text-6xl font-black text-yellow-400 italic">...</span>
+                    <p class="mt-6 text-slate-500 text-sm">*Este es un precio base orientativo en USD. Incluye
+                        materiales y mano de obra.</p>
+                    <a href="https://wa.me/5491100000000" class="btn-primary mt-10 w-full py-5 text-xl">Consultar por
+                        WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div
+                class="max-w-5xl mx-auto bg-slate-50 rounded-[48px] overflow-hidden shadow-2xl border border-slate-100 grid grid-cols-1 lg:grid-cols-2">
+                <!-- Info Side -->
+                <div
+                    class="p-12 lg:p-20 bg-yellow-400 text-black flex flex-col justify-center items-center text-center lg:items-start lg:text-left">
+                    <h2 class="text-4xl font-heading font-extrabold mb-8">Hablemos de tu Proyecto</h2>
+                    <p class="text-black/70 text-lg mb-12 leading-relaxed">
+                        Estamos listos para asesorarte y encontrar el revestimiento perfecto para tu hogar o comercio.
+                    </p>
+                    <div class="space-y-6 flex flex-col items-center lg:items-start">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                            </div>
+                            <span class="text-xl font-bold">+54 9 11 1234-5678</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-black/10 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <span class="text-xl font-bold">Showroom - Buenos Aires</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Side -->
+                <div class="p-12 lg:p-20 flex flex-col justify-center">
+                    <form action="#" class="space-y-6 reveal">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-slate-700">Nombre</label>
+                                <input type="text" placeholder="Ej: Nicolas"
+                                    class="w-full px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-slate-700">WhatsApp</label>
+                                <input type="tel" placeholder="+54 9..."
+                                    class="w-full px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700">¿Qué buscas renovar?</label>
+                            <select
+                                class="w-full px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all appearance-none">
+                                <option>Cocina / Baño</option>
+                                <option>Living / Dormitorio</option>
+                                <option>Local Comercial</option>
+                                <option>Otros</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700">Mensaje</label>
+                            <textarea rows="4" placeholder="Cuéntanos un poco más..."
+                                class="w-full px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary py-5 text-xl justify-center">Enviar
+                            Consulta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-20 border-t border-white/5">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="col-span-1 md:col-span-2 space-y-6 flex flex-col items-center md:items-start">
+                <div class="flex items-center gap-2">
+                    <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="h-12 w-auto">
+                </div>
+                <p class="text-slate-400 max-w-sm text-lg leading-relaxed">
+                    Transformamos tus espacios con revestimientos de vinilo de alta gama. Rapidez, limpieza y diseño
+                    excepcional.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FFD200] hover:text-black transition-all">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-[#FFD200]">Navegación</h4>
+                <ul class="space-y-4 text-slate-400">
+                    <li><a href="Index.html" class="hover:text-white transition-colors">Inicio</a></li>
+                    <li><a href="catalog.html" class="hover:text-white transition-colors">Catálogo</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-[#FFD200]">Contacto</h4>
+                <ul class="space-y-4 text-slate-400">
+                    <li class="flex items-center justify-center md:justify-start gap-3">
+                        <svg class="w-5 h-5 text-[#FFD200]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        info@coveralldeco.com
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/5 mt-16 pt-8 text-center text-slate-500 text-sm">
+            &copy; 2026 COVERALLDECO. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/5491100000000" class="whatsapp-btn" target="_blank">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.991c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="scripts/animations.js"></script>
+    <script>
+        lucide.createIcons();
+        // Supabase Config (Reuse same credentials)
+        const SUPABASE_URL = "https://hcgadeaqjxwnzrtabnrc.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_D81kWpjOFdu1S7fbnu5Uww_xKSw_UjS";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function loadHomeContent() {
+            const categoryGrid = document.getElementById('category-showcase-grid');
+            try {
+                const { data, error } = await _supabase
+                    .from('materials')
+                    .select('*')
+                    .eq('active', true);
+
+                if (error) throw error;
+
+                // 1. Get unique categories and find the best representative image (one that actually exists)
+                const categoriesMap = new Map();
+                data.forEach(m => {
+                    // If we don't have an image for this category yet, or the one we have is empty/placeholder
+                    const currentImg = categoriesMap.get(m.category);
+                    if (m.image_url && (!currentImg || currentImg.includes('placehold.co'))) {
+                        categoriesMap.set(m.category, m.image_url);
+                    } else if (!categoriesMap.has(m.category)) {
+                        // If it's the first time seeing the category, even if no image, add it
+                        categoriesMap.set(m.category, m.image_url);
+                    }
+                });
+
+                let uniqueCategories = Array.from(categoriesMap.keys()).slice(0, 4);
+
+                const fallbacks = {
+                    "Maderas": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=600",
+                    "Mármoles": "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&q=80&w=600",
+                    "Piedras": "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&q=80&w=600",
+                    "Diseño": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=600"
+                };
+
+                if (uniqueCategories.length === 0) {
+                    uniqueCategories = Object.keys(fallbacks);
+                }
+
+                if (categoryGrid) {
+                    categoryGrid.innerHTML = uniqueCategories.map((cat, index) => {
+                        const img = categoriesMap.get(cat) || fallbacks[cat] || `https://placehold.co/600x600?text=${cat}`;
+                        return `
+                        <a href="catalog.html" class="group block reveal" style="transition-delay: ${index * 100}ms">
+                            <div class="aspect-square rounded-[32px] overflow-hidden border border-white/10 group-hover:border-yellow-400 transition-all mb-4">
+                                <img src="${img}" 
+                                    alt="${cat}" 
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            <h4 class="text-yellow-400 font-black uppercase tracking-[0.2em] text-sm text-center group-hover:tracking-[0.3em] transition-all">${cat}</h4>
+                        </a>`;
+                    }).join('');
+                }
+
+                if (window.initAnimations) window.initAnimations();
+
+            } catch (err) {
+                console.error("Home: Error loading content:", err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadHomeContent);
+
+        // FAQ logic
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Calculator logic
+        function selectType(id, basePrice) {
+            document.querySelectorAll('.calc-option').forEach(opt => opt.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const display = document.getElementById('result-display');
+            const price = document.getElementById('price-result');
+
+            display.classList.remove('hidden');
+            price.innerText = '$' + basePrice.toLocaleString() + '+';
+
+            // Scroll to result smoothly
+            display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Multi-Slider Logic (Global)
+        function initSlider(containerId, sliderId, afterId) {
+            const container = document.getElementById(containerId);
+            const slider = document.getElementById(sliderId);
+            const after = document.getElementById(afterId);
+
+            if (!container || !slider || !after) return;
+
+            const isVertical = container.classList.contains('vertical');
+
+            const move = (e) => {
+                if (e.type === 'touchmove') e.preventDefault();
+
+                const rect = container.getBoundingClientRect();
+                const clientX = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+                const clientY = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+
+                if (isVertical) {
+                    let y = clientY - rect.top;
+                    if (y < 0) y = 0;
+                    if (y > rect.height) y = rect.height;
+                    const percentage = (y / rect.height) * 100;
+                    slider.style.top = `${percentage}%`;
+                    after.style.clipPath = `inset(0 0 ${100 - percentage}% 0)`;
+                } else {
+                    let x = clientX - rect.left;
+                    if (x < 0) x = 0;
+                    if (x > rect.width) x = rect.width;
+                    const percentage = (x / rect.width) * 100;
+                    slider.style.left = `${percentage}%`;
+                    after.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+                }
+            }
+
+            container.addEventListener('mousemove', move);
+            container.addEventListener('touchmove', move, { passive: false });
+            container.addEventListener('touchstart', move, { passive: false });
+        }
+
+        // Initialize all sliders
+        initSlider('ba-main', 'ba-slider', 'ba-after');
+        initSlider('hero-slider-main', 'hero-slider', 'hero-after');
+
+        function updateBASlide(imgSrc, btn) {
+            const afterImg = document.getElementById('ba-after-img');
+            afterImg.style.opacity = '0.5';
+            setTimeout(() => {
+                afterImg.src = imgSrc;
+                afterImg.style.opacity = '1';
+            }, 150);
+
+            document.querySelectorAll('.ba-opt').forEach(opt => opt.classList.remove('active', 'border-yellow-400'));
+            document.querySelectorAll('.ba-opt').forEach(opt => opt.classList.add('border-transparent'));
+            btn.classList.add('active', 'border-yellow-400');
+            btn.classList.remove('border-transparent');
+        }
+    </script>
+</body>
+
+</html>

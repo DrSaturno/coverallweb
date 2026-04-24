@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <script src="scripts/tailwind-config.js"></script>
+    <link rel="stylesheet" href="scripts/main.css">
+    <style>
+        .gold-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .gold-underline::after {
+            content: '';
+            position: absolute;
+            left: 25%;
+            bottom: -8px;
+            width: 50%;
+            height: 1px;
+            background-color: #f4c025;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#1c180d] dark:text-white transition-colors duration-300">
+    <!-- Navbar -->
+    <header id="main-header"
+        class="sticky top-0 z-50 w-full border-b border-[#e8e0ce] dark:border-[#3a3220] bg-background-light/90 dark:bg-background-dark/90 px-6 py-3 sticky-header text-[#1c180d] dark:text-white">
+        <!-- Replaced by loader.js -->
+    </header>
+    <main class="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <!-- Hero Section -->
+        <section class="py-16 md:py-24 text-center reveal">
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight gold-underline mb-4">
+                Proyectos realizados
+            </h1>
+            <p class="mt-12 text-lg text-[#9c8749] italic max-w-2xl mx-auto reveal-scale">
+                Transformaciones premium ejecutadas con precisión artesanal y materiales de vanguardia.
+            </p>
+        </section>
+        <!-- Filters Section -->
+        <div class="border-b border-[#e8e2ce] dark:border-[#3d3621] mb-12">
+            <div class="flex justify-center gap-8 md:gap-12 overflow-x-auto no-scrollbar">
+                <a class="flex flex-col items-center border-b-[2px] border-primary text-[#1c180d] dark:text-white pb-3"
+                    href="#">
+                    <p class="text-sm font-bold tracking-wider">TODOS</p>
+                </a>
+                <a class="flex flex-col items-center border-b-[2px] border-transparent text-[#9c8749] hover:text-primary pb-3 transition-colors"
+                    href="#">
+                    <p class="text-sm font-bold tracking-wider">COCINA</p>
+                </a>
+                <a class="flex flex-col items-center border-b-[2px] border-transparent text-[#9c8749] hover:text-primary pb-3 transition-colors"
+                    href="#">
+                    <p class="text-sm font-bold tracking-wider">BAÑO</p>
+                </a>
+                <a class="flex flex-col items-center border-b-[2px] border-transparent text-[#9c8749] hover:text-primary pb-3 transition-colors"
+                    href="#">
+                    <p class="text-sm font-bold tracking-wider">LIVING</p>
+                </a>
+                <a class="flex flex-col items-center border-b-[2px] border-transparent text-[#9c8749] hover:text-primary pb-3 transition-colors"
+                    href="#">
+                    <p class="text-sm font-bold tracking-wider">DORMITORIO</p>
+                </a>
+                <a class="flex flex-col items-center border-b-[2px] border-transparent text-[#9c8749] hover:text-primary pb-3 transition-colors"
+                    href="#">
+                    <p class="text-sm font-bold tracking-wider">COMERCIAL</p>
+                </a>
+            </div>
+        </div>
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 pb-20 stagger">
+            <!-- Project Card 1 -->
+            <div class="group flex flex-col gap-4">
+                <div
+                    class="relative overflow-hidden border border-transparent group-hover:border-primary transition-all duration-500 rounded-lg">
+                    <div class="flex">
+                        <!-- Left: Before (Split view concept) -->
+                        <div class="w-1/2 h-[350px] bg-center bg-cover border-r border-white/20 grayscale group-hover:grayscale-0 transition-all duration-700"
+                            data-alt="Before kitchen renovation with old cabinets"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnT7Cr9OxCgd7ykcv2yf2IO-_LowKHKOEAorcOv16GZqFl8q5IfzZF0q-ok9ZdsfAmRNU3jkjxuwH--XgwAdxeDbfXW520RJCOmorq-8y2kFG0bRKSlGZFa2ILVUTzJfzNpx-wrkTlMpvszWa5rGSlC0xP05zg9zgzEwvt-OmxYoc9BvvvgR4OYMoB5g4z4N8IE6fu5sZjef0HrWysqpH-DfbRv5JPtiIJQiQOnPZf4kFpMblE4noFQQugByWRaXwJydgkQbn0V74");'>
+                        </div>
+                        <!-- Right: After -->
+                        <div class="w-1/2 h-[350px] bg-center bg-cover transition-all duration-700"
+                            data-alt="After kitchen renovation with gold accents"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjN6hOQbFkNg5yoKM5ejsQka1pEy26YuUET4ZxunKQ6IVkl9sAm5-kcaMhVfHN7SPAU7LzrKn7vWwFD7SboV2F3HQfjEuvGQI6PBdNK4t1h2H7F6p8po-ImVKefLg0cgVeNjhpbZ6WCdLVpbou3xnaOumLmsZrLNitzZgSpW35yzifw3DLW5xF8aKA6FFdoSv2rx88oJVtd7uCoMCdh7TuQGTn3YgYMAfaZ0URnvwN8MTiN0cJtxJn5_m5BmZlaxYxcn0YRMSkS90");'>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-background-light py-2 px-4 rounded shadow-xl">
+                        <span class="text-sm font-bold flex items-center gap-2">Ver proyecto <span
+                                class="material-symbols-outlined text-base">arrow_forward</span></span>
+                    </div>
+                </div>
+                <div class="px-2">
+                    <h3 class="text-2xl font-bold">Renovación de Cocina Moderna</h3>
+                    <div class="flex gap-4 mt-2">
+                        <span class="text-[#9c8749] text-sm italic font-normal">Tiempo: 1 día</span>
+                        <span class="text-[#e8e2ce]">|</span>
+                        <span class="text-[#9c8749] text-sm italic font-normal">Material: Textura Madera Roble</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Card 2 -->
+            <div class="group flex flex-col gap-4">
+                <div
+                    class="relative overflow-hidden border border-transparent group-hover:border-primary transition-all duration-500 rounded-lg">
+                    <div class="flex">
+                        <div class="w-1/2 h-[350px] bg-center bg-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                            data-alt="Before bathroom with old tiles"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBluPMPd4k9GCju6ICB9T0kxfw48Sv1-ixi5sl_IID6S9KETZSLTsTe5K1SuHSiMqR3yVY4AvTPNvin9npmG-IRebCtiHbftOKMiDo84ZmZc0rVDCg5GMUp0jLipFcgMwKS39rV1EwpuIkADDHRzw4g70BOLuhvmAV7oU7Jbj0dNbsNHXWkidJi4rChmokjYybcWWqKflKhFgcH-oCMZXD98ZzIu6uGF4bOMmYNIWh9T9F5rS6SvDPAtH5-2ekYVRbHGcRyO9kTMJ8");'>
+                        </div>
+                        <div class="w-1/2 h-[350px] bg-center bg-cover" data-alt="Modern bathroom after renovation"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjjbGl3KS-0x9f8ojHZ8zmS8ZZWv6bArO-ZzT241lhXo6EIda519THjgl-SgxIeHmpyBsjYuTtM_URLqWF-_dz2Mqs-g5w8yAv4a6p0VJqHavpYX3pMm1VBonac57DssKmTTniCioagHfcdO88YIQwF3PLbgPBf9Wwi4U4JwpTZeP-VYWHxv36GvBa1Z5VZRX_OctJq6huH-_T73bUpIobN3qQOcPk-k664LYnevuosVuDam586pSU0Im6PlwnhU-UC2IDAYR2RPQ");'>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-background-light py-2 px-4 rounded shadow-xl">
+                        <span class="text-sm font-bold flex items-center gap-2">Ver proyecto <span
+                                class="material-symbols-outlined text-base">arrow_forward</span></span>
+                    </div>
+                </div>
+                <div class="px-2">
+                    <h3 class="text-2xl font-bold">Suite Principal &amp; Spa</h3>
+                    <div class="flex gap-4 mt-2">
+                        <span class="text-[#9c8749] text-sm italic font-normal">Tiempo: 2 días</span>
+                        <span class="text-[#e8e2ce]">|</span>
+                        <span class="text-[#9c8749] text-sm italic font-normal">Material: Vinilo Mármol Carrara</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Card 3 -->
+            <div class="group flex flex-col gap-4">
+                <div
+                    class="relative overflow-hidden border border-transparent group-hover:border-primary transition-all duration-500 rounded-lg">
+                    <div class="flex">
+                        <div class="w-1/2 h-[350px] bg-center bg-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                            data-alt="Old commercial office space"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDA0kG5jm4L346w_ZbkA7NPAYDKqcFg90cRhHNphPR4yP4J6WZh4I635OaZHW5L5Hzvbjx59MYctGQ2HeuuuOrmkoQ3C34nd3JnQ2Sa8JtSM8WRG1P6Cw2_acs3XYbgHXgOFtn7N1cs5G3tS1h1O_dpUbKUEjCzwlMu7qCjbGPM0TlGRfkltg99chx3IMtnxZOHoBJPOYHMtEdADjXiLPb7lOvANLG6nUeB-dpQHwRk3z3PRvIeGihshVWuEfy2ZkGfHcMKQQsbibQ");'>
+                        </div>
+                        <div class="w-1/2 h-[350px] bg-center bg-cover"
+                            data-alt="Modern renovated boutique office space"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKX_8fFqBlIxl_pHU3MMEjDo5T4T9aTLtjk8AS7myhg_vZRIry-VDH3RWLSHSlEEQYvOveHfyksX1wRNmliLK3HkRc_sw_BVG13CiA08opUPBTlkJvFyolvtONLVb-XRLtUwBxIHJOwWRcVJqIRsKKoMMCNfPP1WV3UpUNOTp4SIdwABDT022jVBw3yUGENCwRzJh1o_BLZDuFhfxapfiW-i7-yJNnWdPYOnosPI5BqWzxN06YRnb0K-wG5l-NqpahLwgL8hRqI44");'>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-background-light py-2 px-4 rounded shadow-xl">
+                        <span class="text-sm font-bold flex items-center gap-2">Ver proyecto <span
+                                class="material-symbols-outlined text-base">arrow_forward</span></span>
+                    </div>
+                </div>
+                <div class="px-2">
+                    <h3 class="text-2xl font-bold">Showroom Boutique</h3>
+                    <div class="flex gap-4 mt-2">
+                        <span class="text-[#9c8749] text-sm italic font-normal">Tiempo: 3 días</span>
+                        <span class="text-[#e8e2ce]">|</span>
+                        <span class="text-[#9c8749] text-sm italic font-normal">Material: Industrial Grey
+                            Concrete</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Card 4 -->
+            <div class="group flex flex-col gap-4">
+                <div
+                    class="relative overflow-hidden border border-transparent group-hover:border-primary transition-all duration-500 rounded-lg">
+                    <div class="flex">
+                        <div class="w-1/2 h-[350px] bg-center bg-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                            data-alt="Empty living room before renovation"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJEve02ixEhz529YSnLE-q87QYDGtTlKBfJl1dySiTWx09VUq9zcPdOHGEdvnGgVtSuLV1KqHeG5i6_cMbjr2kuCK-z3TAa_MLs0GBHak11PFagTgu1s2HrHI_dZK4YNdXJAjY69GSglRoPNYrl7b_d1lWXlWq_oPvCkppS60jUfZfnCSu5ilwpCfusE-WrruACHiIpqzEJXh7-uxEvGvr-ewNFkUqJSMkBqEs9hqFWyPGu-ooX6q3XJcc_RBX-IUdXDpImOzwzMQ");'>
+                        </div>
+                        <div class="w-1/2 h-[350px] bg-center bg-cover"
+                            data-alt="Luxury living room after transformation"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAEFpwQTBkwl_OKzk18ItjZgj8noRkMsl_C_qm8e87RUdw3hOV152qr6zeaVD_87dckH-PB_VJCH4Yh0ktoYDonfeGMSqfCtBjnVZTkXP4hjfMYgYvc9wXQCYBNYhPbhAyaA2QtSLxVe8hws2I2fLYwEpj-107C3bDUVyCEnmlfdWywiXl7Wf-MRt94r23NMW7NbZfWxBlyev-b1GjC2oA_lOqeLEeIYcrlo7RQ-a2cXt3D41Zcn6klBYR9xM_rg99sw64uauFDYg");'>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-background-light py-2 px-4 rounded shadow-xl">
+                        <span class="text-sm font-bold flex items-center gap-2">Ver proyecto <span
+                                class="material-symbols-outlined text-base">arrow_forward</span></span>
+                    </div>
+                </div>
+                <div class="px-2">
+                    <h3 class="text-2xl font-bold">Living Premium Residencial</h3>
+                    <div class="flex gap-4 mt-2">
+                        <span class="text-[#9c8749] text-sm italic font-normal">Tiempo: 2 días</span>
+                        <span class="text-[#e8e2ce]">|</span>
+                        <span class="text-[#9c8749] text-sm italic font-normal">Material: Wall Panels &amp;
+                            Texture</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Proof of Work Section -->
+    <section class="bg-[#f0ede6] dark:bg-[#1a160d] py-20 px-6 lg:px-10">
+        <div class="max-w-[1280px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div class="flex flex-col items-center gap-4">
+                    <span class="material-symbols-outlined text-4xl text-primary">clean_hands</span>
+                    <h4 class="text-xl font-bold">Sin Escombros</h4>
+                    <p class="text-[#9c8749] text-sm leading-relaxed max-w-xs">Olvídate del polvo y el ruido. Nuestro
+                        proceso es quirúrgico y limpio, ideal para espacios en uso.</p>
+                </div>
+                <div class="flex flex-col items-center gap-4">
+                    <span class="material-symbols-outlined text-4xl text-primary">shutter_speed</span>
+                    <h4 class="text-xl font-bold">Ejecución Ultra Rápida</h4>
+                    <p class="text-[#9c8749] text-sm leading-relaxed max-w-xs">Transformamos ambientes completos en
+                        menos de 72 horas sin sacrificar la calidad premium.</p>
+                </div>
+                <div class="flex flex-col items-center gap-4">
+                    <span class="material-symbols-outlined text-4xl text-primary">workspace_premium</span>
+                    <h4 class="text-xl font-bold">Garantía Certificada</h4>
+                    <p class="text-[#9c8749] text-sm leading-relaxed max-w-xs">Utilizamos materiales de alta resistencia
+                        con terminaciones que superan la construcción tradicional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Quality Statement Section -->
+    <section class="bg-[#1c180d] text-white py-24 text-center px-6">
+        <div class="max-w-4xl mx-auto flex flex-col items-center gap-8">
+            <span class="material-symbols-outlined text-primary text-5xl">verified</span>
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight italic">
+                "Esto no es un render. <br />Es la realidad de nuestros clientes."
+            </h2>
+            <div class="h-px w-24 bg-primary"></div>
+            <p class="text-[#9c8749] text-lg max-w-2xl">
+                Cada imagen de nuestro portfolio corresponde a una obra finalizada y documentada por nuestro equipo.
+                Transformaciones tangibles, resultados reales.
+            </p>
+        </div>
+    </section>
+    <!-- Final CTA Footer -->
+    <!-- Footer -->
+    <footer id="main-footer"
+        class="bg-white dark:bg-[#1c170d] border-t border-[#e8e0ce] dark:border-[#3a3220] py-16 px-6">
+        <!-- Replaced by loader.js -->
+    </footer>
+    <script src="scripts/loader.js"></script>
+    <script src="scripts/animations.js"></script>
+</body>
+
+</html>

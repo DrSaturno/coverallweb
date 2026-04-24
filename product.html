@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material | Coveralldeco</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="scripts/tailwind-config.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="scripts/main.css">
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        .skeleton {
+            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="glass-header h-20 flex items-center">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="Index.html" class="flex items-center group">
+                <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco"
+                    class="brand-logo transition-transform duration-300 group-hover:scale-105">
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="Index.html"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Inicio</a>
+                <a href="catalog.html"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Catálogo</a>
+                <a href="Index.html#contacto" class="btn-primary py-2 px-6 text-sm">Contratar</a>
+            </nav>
+            <button id="mobile-menu-toggle" class="md:hidden p-2 text-white hover:text-yellow-400">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section class="pt-32 pb-20 md:pt-48 md:pb-32 bg-white min-h-[60vh]">
+        <div class="container mx-auto px-6">
+            <div id="product-content" class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div class="skeleton aspect-[4/5] rounded-[48px]"></div>
+                <div class="space-y-6">
+                    <div class="skeleton h-6 w-32 rounded"></div>
+                    <div class="skeleton h-16 w-full rounded"></div>
+                    <div class="skeleton h-32 w-full rounded"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Specs & Benefits -->
+    <section class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12" id="benefits-grid">
+                <div
+                    class="bg-white p-10 rounded-[32px] shadow-sm border border-slate-100 reveal group hover:-translate-y-2 transition-transform duration-500">
+                    <div
+                        class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-6 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Ultra Resistente</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Material de alto tránsito diseñado para soportar
+                        roces, humedad y rayos UV sin despegarse jamás.</p>
+                </div>
+                <div class="bg-white p-10 rounded-[32px] shadow-sm border border-slate-100 reveal group hover:-translate-y-2 transition-transform duration-500"
+                    style="transition-delay: 100ms">
+                    <div
+                        class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-6 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Acabado Realista</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Texturas premium importadas con relieve táctil que
+                        imitan a la perfección madera, mármol o cemento.</p>
+                </div>
+                <div class="bg-white p-10 rounded-[32px] shadow-sm border border-slate-100 reveal group hover:-translate-y-2 transition-transform duration-500"
+                    style="transition-delay: 200ms">
+                    <div
+                        class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-6 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all">
+                        <i data-lucide="clock" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Sin Obra</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Olvídate de escombros. Se aplica directo sobre tu
+                        superficie actual. Renovación total en menos de 24hs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="main-footer" class="bg-black text-white py-20">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="col-span-1 md:col-span-2 space-y-6 flex flex-col items-center md:items-start">
+                <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="h-12 w-auto">
+                <p class="text-slate-400 max-w-sm">Lo último en tecnología de revestimientos para tu hogar o negocio.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-yellow-400 font-bold mb-6">Enlaces</h4>
+                <ul class="space-y-4 text-slate-500">
+                    <li><a href="Index.html" class="hover:text-white transition-all">Inicio</a></li>
+                    <li><a href="catalog.html" class="hover:text-white transition-all">Catálogo</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed WA Button on Mobile -->
+    <div class="fixed bottom-6 right-6 z-[3000] md:hidden">
+        <a id="wa-mobile-float" href="#" target="_blank"
+            class="w-16 h-16 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center text-white">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.991c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="scripts/animations.js"></script>
+    <script>
+        // Emergency Debug
+        console.log("Product Page Script Running");
+        console.log("Current URL:", window.location.href);
+        console.log("Search Params:", window.location.search);
+
+        const SUPABASE_URL = "https://hcgadeaqjxwnzrtabnrc.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_D81kWpjOFdu1S7fbnu5Uww_xKSw_UjS";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function loadProduct() {
+            // 1. Try Search Params (?id=...)
+            const searchParams = new URLSearchParams(window.location.search);
+            let productId = searchParams.get('id') || searchParams.get('m_id');
+
+            // 2. Try Hash Fallback (#id=...)
+            if (!productId && window.location.hash) {
+                const hashContent = window.location.hash.substring(1);
+                const hashParams = new URLSearchParams(hashContent.includes('?') ? hashContent.split('?')[1] : hashContent);
+                productId = hashParams.get('id') || hashParams.get('m_id') || hashContent;
+            }
+
+            // 3. Try LocalStorage Fallback (Foolproof for aggressive servers)
+            if (!productId) {
+                productId = localStorage.getItem('lastSelectedProductId');
+                console.log("Detecting ID from localStorage:", productId);
+            }
+
+            const content = document.getElementById('product-content');
+
+            console.log("Current URL:", window.location.href);
+            console.log("Final Resolved ID:", productId);
+
+            if (!productId) {
+                content.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <h2 class="text-2xl font-bold mb-4">Error: No se recibió ID del producto</h2>
+                        <p class="text-slate-500 mb-6 font-mono text-xs">URL detectada: ${window.location.href}</p>
+                        <a href="catalog.html" class="btn-primary py-3 px-8">Volver al catálogo</a>
+                    </div>`;
+                return;
+            }
+
+            try {
+                const { data: m, error } = await _supabase
+                    .from('materials')
+                    .select('*')
+                    .eq('id', productId)
+                    .single();
+
+                if (error || !m) {
+                    // Try by code if ID fails
+                    console.log("ID search failed, trying by code...");
+                    const { data: m2, error: err2 } = await _supabase
+                        .from('materials')
+                        .select('*')
+                        .eq('code', productId)
+                        .single();
+                    if (err2 || !m2) throw error || new Error("Material no encontrado");
+                    renderContent(m2);
+                } else {
+                    renderContent(m);
+                }
+            } catch (err) {
+                console.error("Fetch error:", err);
+                content.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <div class="text-6xl mb-6">😕</div>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4">Material no encontrado</h2>
+                        <a href="catalog.html" class="btn-primary py-4 px-10">Volver al Catálogo</a>
+                    </div>`;
+            }
+        }
+
+        function renderContent(m) {
+            const content = document.getElementById('product-content');
+            document.title = `${m.name} | Coveralldeco`;
+
+            const waMessage = encodeURIComponent(`Hola Coveralldeco! Me gustaría recibir un presupuesto para el material "${m.name}" (Ref: ${m.code || m.name}).`);
+            const waLink = `https://wa.me/5491100000000?text=${waMessage}`;
+
+            const mobileWa = document.getElementById('wa-mobile-float');
+            if (mobileWa) mobileWa.href = waLink;
+
+            content.innerHTML = `
+                <div class="reveal">
+                    <div class="sticky top-24 md:top-32">
+                        <div class="aspect-[4/5] bg-slate-50 rounded-[48px] overflow-hidden shadow-2xl border border-slate-100 group">
+                            <img src="${m.image_url || 'https://placehold.co/600x750?text=Coverall'}" 
+                                 alt="${m.name}" 
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center text-center lg:items-start lg:text-left reveal">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="px-4 py-1.5 bg-yellow-400 text-black text-[10px] font-black uppercase tracking-widest rounded-full">${m.category}</span>
+                        <span class="text-slate-400 font-mono text-xs uppercase">COD: ${m.code || 'S/N'}</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-heading font-black text-slate-900 mb-8 leading-[1.1]">${m.name}</h1>
+                    <p class="text-xl text-slate-500 leading-relaxed mb-12">
+                        Transforma tus espacios con la textura premium <span class="text-slate-900 font-bold">${m.name}</span>. 
+                        Nuestros revestimientos imitan a la perfección materiales naturales con una durabilidad superior y sin necesidad de obras molestas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 w-full mb-12">
+                        <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col justify-center">
+                            <p class="text-[10px] text-slate-400 font-black uppercase tracking-tighter mb-2">Ancho del Rollo</p>
+                            <p class="text-2xl font-black text-slate-900">${m.width_m || '1.22'}m</p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col justify-center">
+                            <p class="text-[10px] text-slate-400 font-black uppercase tracking-tighter mb-2">Instalación</p>
+                            <p class="text-2xl font-black text-slate-900">En 24hs</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-6 w-full">
+                        <a href="${waLink}" target="_blank" class="btn-primary py-5 px-12 text-xl shadow-xl flex items-center justify-center gap-3 group">
+                            <span>Pide Presupuesto por WhatsApp</span>
+                            <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>`;
+
+            if (window.initAnimations) window.initAnimations();
+            if (window.lucide) lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProduct();
+            if (window.lucide) lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Texturas | Coveralldeco</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="scripts/tailwind-config.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="scripts/main.css">
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        .filter-btn.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="glass-header h-20 flex items-center">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="Index.html" class="flex items-center group">
+                <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco"
+                    class="brand-logo transition-transform duration-300 group-hover:scale-105">
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="Index.html"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Inicio</a>
+                <a href="Index.html#servicios"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Servicios</a>
+                <a href="catalog.html"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Catálogo</a>
+                <a href="Index.html#galeria"
+                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Proyectos</a>
+                <a href="Index.html#contacto" class="btn-primary py-2 px-6 text-sm">Contratar</a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <button id="mobile-menu-toggle" class="md:hidden p-2 text-white hover:text-yellow-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-black z-[2000] flex flex-col items-center justify-center p-6 translate-x-full transition-transform duration-500 md:hidden">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 p-2 text-white hover:text-yellow-400">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <nav class="flex flex-col items-center gap-10 text-center">
+                <a href="Index.html"
+                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Inicio</a>
+                <a href="Index.html#servicios"
+                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Servicios</a>
+                <a href="catalog.html"
+                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Catálogo</a>
+                <a href="#contacto"
+                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Contacto</a>
+                <a href="#contacto" class="btn-primary py-5 px-12 text-xl mt-4">Pide Presupuesto</a>
+            </nav>
+            <div class="mt-20 flex gap-6">
+                <!-- Social Icons can go here -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Catalog Hero -->
+    <section class="pt-32 md:pt-40 pb-16 md:pb-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl reveal flex flex-col items-center text-center md:items-start md:text-left">
+                <h1 class="text-5xl md:text-7xl font-heading font-extrabold text-slate-900 mb-6 leading-tight">
+                    Catálogo de <br><span class="bg-yellow-400 px-2 italic">Texturas & Vinilos</span>
+                </h1>
+                <p class="text-xl text-slate-500 leading-relaxed">
+                    Explora nuestra selección exclusiva de acabados importados. Toca, siente y visualiza cómo quedará tu
+                    próximo ambiente.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters & Grid -->
+    <section class="pb-20 md:pb-32 bg-white">
+        <div class="container mx-auto px-6">
+            <!-- Filter Bar -->
+            <div id="category-filters" class="flex flex-wrap justify-center md:justify-start gap-3 mb-16 reveal">
+                <button data-category="Todos"
+                    class="filter-btn active px-8 py-3 rounded-full bg-black text-yellow-400 font-bold border-2 border-black transition-all">Todos</button>
+                <!-- Other categories will be injected here -->
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 stagger" id="catalog-grid">
+                <!-- Data will be injected here -->
+                <div class="col-span-full py-20 text-center" id="catalog-loader">
+                    <div
+                        class="inline-block w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin">
+                    </div>
+                    <p class="mt-4 text-slate-500 font-bold">Cargando catálogo premium...</p>
+                </div>
+            </div>
+
+            <!-- Show More -->
+            <div class="mt-16 md:mt-24 text-center reveal hidden" id="show-more-container">
+                <button
+                    class="px-12 py-5 bg-black text-yellow-400 rounded-full font-black text-lg hover:bg-yellow-400 hover:text-black transition-all border-2 border-black">Cargar
+                    más texturas</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-20 border-t border-white/5">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div class="col-span-1 md:col-span-2 space-y-6 flex flex-col items-center md:items-start">
+                <div class="flex items-center gap-2">
+                    <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="h-12 w-auto">
+                </div>
+                <p class="text-slate-400 max-w-sm text-lg leading-relaxed">
+                    Transformamos tus espacios con revestimientos de vinilo de alta gama. Rapidez, limpieza y diseño
+                    excepcional.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FFD200] hover:text-black transition-all">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-[#FFD200]">Navegación</h4>
+                <ul class="space-y-4 text-slate-400">
+                    <li><a href="Index.html" class="hover:text-white transition-colors">Inicio</a></li>
+                    <li><a href="catalog.html" class="hover:text-white transition-colors">Catálogo</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6 text-[#FFD200]">Contacto</h4>
+                <ul class="space-y-4 text-slate-400">
+                    <li class="flex items-center justify-center md:justify-start gap-3">
+                        <svg class="w-5 h-5 text-[#FFD200]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        info@coveralldeco.com
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/5 mt-16 pt-8 text-center text-slate-500 text-sm">
+            &copy; 2026 COVERALLDECO. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/animations.js"></script>
+    <script>
+        // Supabase Configuration
+        const SUPABASE_URL = "https://hcgadeaqjxwnzrtabnrc.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_D81kWpjOFdu1S7fbnu5Uww_xKSw_UjS";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        let allMaterials = [];
+        let filteredMaterials = [];
+        let currentCategory = "Todos";
+
+        async function loadCatalog() {
+            const grid = document.getElementById('catalog-grid');
+            const loader = document.getElementById('catalog-loader');
+            const filterBar = document.getElementById('category-filters');
+
+            try {
+                const { data, error } = await _supabase
+                    .from('materials')
+                    .select('*')
+                    .eq('active', true)
+                    .order('name', { ascending: true });
+
+                if (error) throw error;
+
+                allMaterials = data;
+                loader.classList.add('hidden');
+
+                // Generate Categories
+                const categories = ["Todos", ...new Set(data.map(m => m.category))];
+                renderFilters(categories);
+
+                renderGrid(allMaterials);
+
+            } catch (err) {
+                console.error("Error loading catalog:", err);
+                loader.innerHTML = `
+                    <p class="text-red-500 font-bold">Error al cargar el catálogo. Por favor intenta de nuevo.</p>
+                    <button onclick="location.reload()" class="mt-4 text-sm underline">Reintentar</button>
+                `;
+            }
+        }
+
+        function renderFilters(categories) {
+            const container = document.getElementById('category-filters');
+            container.innerHTML = categories.map(cat => `
+                <button 
+                    data-category="${cat}"
+                    onclick="filterByCategory('${cat}')"
+                    class="filter-btn ${cat === 'Todos' ? 'active bg-black text-yellow-400' : 'border-slate-200 text-slate-500'} px-8 py-3 rounded-full border-2 font-bold hover:border-yellow-400 hover:text-black transition-all"
+                >${cat}</button>
+            `).join('');
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+
+            // Update UI buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('active', 'bg-black', 'text-yellow-400');
+                    btn.classList.remove('border-slate-200', 'text-slate-500');
+                } else {
+                    btn.classList.remove('active', 'bg-black', 'text-yellow-400');
+                    btn.classList.add('border-slate-200', 'text-slate-500');
+                }
+            });
+
+            if (category === "Todos") {
+                renderGrid(allMaterials);
+            } else {
+                const filtered = allMaterials.filter(m => m.category === category);
+                renderGrid(filtered);
+            }
+        }
+
+        function renderGrid(materials) {
+            const grid = document.getElementById('catalog-grid');
+
+            if (materials.length === 0) {
+                grid.innerHTML = `<p class="col-span-full py-20 text-center text-slate-400">No se encontraron texturas en esta categoría.</p>`;
+                return;
+            }
+
+            grid.innerHTML = materials.map((m, index) => {
+                const url = `product.html?id=${m.id}`;
+                return `
+                <a href="${url}" onclick="localStorage.setItem('lastSelectedProductId', '${m.id}'); window.location.href='${url}'; return false;" class="group block bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 reveal" style="transition-delay: ${index * 50}ms">
+                    <div class="aspect-[4/5] overflow-hidden relative bg-slate-100">
+                        <img src="${m.image_url || 'https://placehold.co/600x750?text=Sin+Imagen'}" 
+                             alt="${m.name}" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x750?text=Error+Imagen'">
+                        <!-- Overlay: Visible on hover or touch -->
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 md:group-active:opacity-100 transition-opacity flex items-center justify-center p-6">
+                            <span class="px-6 py-3 bg-white text-black font-black rounded-xl text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                Ver Detalles
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-yellow-600 text-[10px] font-black uppercase tracking-widest">${m.category}</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1">${m.name}</h3>
+                        <p class="text-slate-400 text-xs mt-1 font-mono">${m.code || ''}</p>
+                    </div>
+                </a>
+            `;
+            }).join('');
+
+            // Trigger animations for new items
+            if (window.initAnimations) window.initAnimations();
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCatalog();
+            if (window.lucide) lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
