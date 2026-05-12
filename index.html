@@ -45,12 +45,8 @@
             <nav class="hidden md:flex items-center gap-8">
                 <a href="index.html"
                     class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Inicio</a>
-                <a href="index.html#servicios"
-                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Servicios</a>
                 <a href="catalog.html"
                     class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Catálogo</a>
-                <a href="index.html#galeria"
-                    class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Proyectos</a>
                 <a href="index.html#contacto" class="btn-primary py-2 px-6 text-sm">Contratar</a>
             </nav>
 
@@ -75,8 +71,6 @@
             <nav class="flex flex-col items-center gap-10 text-center">
                 <a href="index.html"
                     class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Inicio</a>
-                <a href="index.html#servicios"
-                    class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Servicios</a>
                 <a href="catalog.html"
                     class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Catálogo</a>
                 <a href="#contacto"
@@ -155,7 +149,7 @@
                     class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm hover:shadow-xl transition-all group reveal">
                     <div
                         class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-8 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300">
-                        <i data-lucide="zap" class="w-8 h-8"></i>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Rapidez Total</h3>
                     <p class="text-slate-500 leading-relaxed text-sm">Renovamos tus ambientes en horas, no días. La
@@ -166,7 +160,7 @@
                     style="transition-delay: 100ms">
                     <div
                         class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-8 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300">
-                        <i data-lucide="hammer" class="w-8 h-8"></i>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l4 4-6 6 4 4 6-6 4 4 3-3-9-9-3 3z M14 3l7 7"/></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Sin Escombros</h3>
                     <p class="text-slate-500 leading-relaxed text-sm">Olvídate del polvo y el ruido. Instalamos sobre
@@ -177,7 +171,7 @@
                     style="transition-delay: 200ms">
                     <div
                         class="w-16 h-16 bg-yellow-400/10 rounded-2xl flex items-center justify-center mb-8 text-yellow-600 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-300">
-                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Garantía Real</h3>
                     <p class="text-slate-500 leading-relaxed text-sm">Vinilos de alta durabilidad resistentes al agua y
@@ -451,8 +445,8 @@
         </div>
     </section>
 
-    <!-- Gallery Slider — Trabajos realizados -->
-    <section class="py-20 md:py-32 bg-white overflow-hidden">
+    <!-- Gallery — Trabajos realizados -->
+    <section class="py-20 md:py-32 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-14 reveal">
                 <span class="text-yellow-600 font-bold uppercase tracking-widest text-sm">Galería de transformaciones</span>
@@ -460,79 +454,40 @@
                     Resultados que<br><span class="bg-yellow-400 px-2">hablan solos</span>
                 </h2>
             </div>
-        </div>
-        <!-- Full-width slider -->
-        <div class="relative" id="gallery-slider-wrap">
-            <div class="overflow-hidden">
-                <div class="flex transition-transform duration-700 ease-in-out" id="gallery-track">
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c1.jpg" alt="Trabajo realizado 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c2.jpg" alt="Trabajo realizado 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c3.jpg" alt="Trabajo realizado 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c4.jpg" alt="Trabajo realizado 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c5.jpg" alt="Trabajo realizado 5" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c6.jpg" alt="Trabajo realizado 6" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
-                    <!-- Duplicates for infinite loop feel -->
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c1.jpg" alt="Trabajo realizado 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c2.jpg" alt="Trabajo realizado 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
-                    <div class="gallery-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3">
-                        <div class="aspect-[4/3] rounded-[28px] overflow-hidden shadow-lg">
-                            <img src="imagenes/c3.jpg" alt="Trabajo realizado 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                        </div>
-                    </div>
+            <!-- Main image -->
+            <div class="max-w-4xl mx-auto reveal-scale">
+                <div class="aspect-video rounded-[32px] overflow-hidden shadow-2xl mb-8">
+                    <img id="gallery-main-img" src="imagenes/c1.jpg" alt="Trabajo realizado"
+                        class="w-full h-full object-cover transition-opacity duration-400">
+                </div>
+                <!-- Thumbnail selector -->
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <button onclick="gallerySelect(this,'imagenes/c1.jpg')"
+                        class="gallery-thumb w-20 h-20 rounded-2xl overflow-hidden border-4 border-yellow-400 shadow-lg transition-all hover:scale-105">
+                        <img src="imagenes/c1.jpg" class="w-full h-full object-cover">
+                    </button>
+                    <button onclick="gallerySelect(this,'imagenes/c2.jpg')"
+                        class="gallery-thumb w-20 h-20 rounded-2xl overflow-hidden border-4 border-transparent shadow-lg transition-all hover:scale-105 hover:border-yellow-400/60">
+                        <img src="imagenes/c2.jpg" class="w-full h-full object-cover">
+                    </button>
+                    <button onclick="gallerySelect(this,'imagenes/c3.jpg')"
+                        class="gallery-thumb w-20 h-20 rounded-2xl overflow-hidden border-4 border-transparent shadow-lg transition-all hover:scale-105 hover:border-yellow-400/60">
+                        <img src="imagenes/c3.jpg" class="w-full h-full object-cover">
+                    </button>
+                    <button onclick="gallerySelect(this,'imagenes/c4.jpg')"
+                        class="gallery-thumb w-20 h-20 rounded-2xl overflow-hidden border-4 border-transparent shadow-lg transition-all hover:scale-105 hover:border-yellow-400/60">
+                        <img src="imagenes/c4.jpg" class="w-full h-full object-cover">
+                    </button>
+                    <button onclick="gallerySelect(this,'imagenes/c5.jpg')"
+                        class="gallery-thumb w-20 h-20 rounded-2xl overflow-hidden border-4 border-transparent shadow-lg transition-all hover:scale-105 hover:border-yellow-400/60">
+                        <img src="imagenes/c5.jpg" class="w-full h-full object-cover">
+                    </button>
+                    <button onclick="gallerySelect(this,'imagenes/c6.jpg')"
+                        class="gallery-thumb w-20 h-20 rounded-2xl overflow-hidden border-4 border-transparent shadow-lg transition-all hover:scale-105 hover:border-yellow-400/60">
+                        <img src="imagenes/c6.jpg" class="w-full h-full object-cover">
+                    </button>
                 </div>
             </div>
-            <!-- Arrows -->
-            <button onclick="galleryPrev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-yellow-400 transition-all group">
-                <svg class="w-5 h-5 text-slate-700 group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                </svg>
-            </button>
-            <button onclick="galleryNext()" class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-yellow-400 transition-all group">
-                <svg class="w-5 h-5 text-slate-700 group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-            </button>
-        </div>
-        <!-- Dots -->
-        <div class="flex justify-center gap-2 mt-8" id="gallery-dots">
-            <button onclick="galleryGoTo(0)" class="gallery-dot w-2.5 h-2.5 rounded-full bg-yellow-400 transition-all"></button>
-            <button onclick="galleryGoTo(1)" class="gallery-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-all"></button>
-            <button onclick="galleryGoTo(2)" class="gallery-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-all"></button>
-            <button onclick="galleryGoTo(3)" class="gallery-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-all"></button>
-            <button onclick="galleryGoTo(4)" class="gallery-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-all"></button>
-            <button onclick="galleryGoTo(5)" class="gallery-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-all"></button>
         </div>
     </section>
 
@@ -736,21 +691,12 @@
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
             <div class="col-span-1 md:col-span-2 space-y-6 flex flex-col items-center md:items-start">
                 <div class="flex items-center gap-2">
-                    <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="h-12 w-auto">
+                    <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="h-16 w-auto">
                 </div>
                 <p class="text-slate-400 max-w-sm text-lg leading-relaxed">
                     Transformamos tus espacios con revestimientos de vinilo de alta gama. Rapidez, limpieza y diseño
                     excepcional.
                 </p>
-                <div class="flex gap-4">
-                    <a href="https://instagram.com/coverall.deco" target="_blank"
-                        class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FFD200] hover:text-black transition-all">
-                        <span class="sr-only">Instagram</span>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                </div>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-6 text-[#FFD200]">Navegación</h4>
@@ -761,21 +707,18 @@
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-6 text-[#FFD200]">Contacto</h4>
-                <ul class="space-y-4 text-slate-400">
+                <ul class="space-y-5 text-slate-400">
                     <li class="flex items-center justify-center md:justify-start gap-3">
-                        <svg class="w-5 h-5 text-[#FFD200]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 flex-shrink-0 text-[#FFD200]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                         <a href="mailto:hola@coveralldeco.com.ar" class="hover:text-white transition-colors">hola@coveralldeco.com.ar</a>
                     </li>
                     <li class="flex items-center justify-center md:justify-start gap-3">
-                        <a href="https://instagram.com/coverall.deco" target="_blank"
-                            class="w-9 h-9 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FFD200] hover:text-black transition-all">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
+                        <svg class="w-5 h-5 flex-shrink-0 text-[#FFD200]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
                         <a href="https://instagram.com/coverall.deco" target="_blank" class="hover:text-white transition-colors">@coverall.deco</a>
                     </li>
                 </ul>
@@ -795,10 +738,8 @@
     </a>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="scripts/animations.js"></script>
     <script>
-        lucide.createIcons();
         // Supabase Config (Reuse same credentials)
         const SUPABASE_URL = "https://hcgadeaqjxwnzrtabnrc.supabase.co";
         const SUPABASE_KEY = "sb_publishable_D81kWpjOFdu1S7fbnu5Uww_xKSw_UjS";
@@ -848,4 +789,118 @@
                             <div class="aspect-square rounded-[32px] overflow-hidden border border-white/10 group-hover:border-yellow-400 transition-all mb-4">
                                 <img src="${img}" 
                                     alt="${cat}" 
-                                    class="w-full h-full object-cover group-hover:scale-110 transitio
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            <h4 class="text-yellow-400 font-black uppercase tracking-[0.2em] text-sm text-center group-hover:tracking-[0.3em] transition-all">${cat}</h4>
+                        </a>`;
+                    }).join('');
+                }
+
+                if (window.initAnimations) window.initAnimations();
+
+            } catch (err) {
+                console.error("Home: Error loading content:", err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadHomeContent);
+
+        // FAQ logic
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // Calculator logic
+        function selectType(id, basePrice) {
+            document.querySelectorAll('.calc-option').forEach(opt => opt.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const display = document.getElementById('result-display');
+            const price = document.getElementById('price-result');
+
+            display.classList.remove('hidden');
+            price.innerText = '$' + basePrice.toLocaleString() + '+';
+
+            // Scroll to result smoothly
+            display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Multi-Slider Logic (Global)
+        function initSlider(containerId, sliderId, afterId) {
+            const container = document.getElementById(containerId);
+            const slider = document.getElementById(sliderId);
+            const after = document.getElementById(afterId);
+
+            if (!container || !slider || !after) return;
+
+            const isVertical = container.classList.contains('vertical');
+
+            const move = (e) => {
+                if (e.type === 'touchmove') e.preventDefault();
+
+                const rect = container.getBoundingClientRect();
+                const clientX = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+                const clientY = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+
+                if (isVertical) {
+                    let y = clientY - rect.top;
+                    if (y < 0) y = 0;
+                    if (y > rect.height) y = rect.height;
+                    const percentage = (y / rect.height) * 100;
+                    slider.style.top = `${percentage}%`;
+                    after.style.clipPath = `inset(0 0 ${100 - percentage}% 0)`;
+                } else {
+                    let x = clientX - rect.left;
+                    if (x < 0) x = 0;
+                    if (x > rect.width) x = rect.width;
+                    const percentage = (x / rect.width) * 100;
+                    slider.style.left = `${percentage}%`;
+                    after.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+                }
+            }
+
+            container.addEventListener('mousemove', move);
+            container.addEventListener('touchmove', move, { passive: false });
+            container.addEventListener('touchstart', move, { passive: false });
+        }
+
+        // Initialize all sliders
+        initSlider('ba-main', 'ba-slider', 'ba-after');
+        initSlider('hero-slider-main', 'hero-slider', 'hero-after');
+
+        function updateBASlide(imgSrc, btn) {
+            const afterImg = document.getElementById('ba-after-img');
+            afterImg.style.opacity = '0.5';
+            setTimeout(() => {
+                afterImg.src = imgSrc;
+                afterImg.style.opacity = '1';
+            }, 150);
+
+            document.querySelectorAll('.ba-opt').forEach(opt => opt.classList.remove('active', 'border-yellow-400'));
+            document.querySelectorAll('.ba-opt').forEach(opt => opt.classList.add('border-transparent'));
+            btn.classList.add('active', 'border-yellow-400');
+            btn.classList.remove('border-transparent');
+        }
+
+        // Gallery selector
+        function gallerySelect(btn, src) {
+            const img = document.getElementById('gallery-main-img');
+            if (!img) return;
+            img.style.opacity = '0';
+            setTimeout(() => { img.src = src; img.style.opacity = '1'; }, 200);
+            document.querySelectorAll('.gallery-thumb').forEach(t => {
+                t.classList.remove('border-yellow-400');
+                t.classList.add('border-transparent');
+            });
+            btn.classList.remove('border-transparent');
+            btn.classList.add('border-yellow-400');
+        }
+    </script>
+</body>
+
+</html>
+                                                                                                                                                                         
