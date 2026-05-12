@@ -14,110 +14,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Revestimientos | Coveralldeco</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="scripts/tailwind-config.js"></script>
-    <!-- Styles -->
     <link rel="stylesheet" href="scripts/main.css">
     <style>
-        /* ── Catalog-specific styles ── */
         .cat-pill { cursor: pointer; transition: all .2s; }
-        .cat-pill.active {
-            background: #FFD200;
-            color: #000;
-            border-color: #FFD200;
-        }
-        .cat-pill:not(.active):hover {
-            border-color: #FFD200;
-            color: #FFD200;
-        }
-
+        .cat-pill.active { background: #FFD200; color: #000; border-color: #FFD200; }
+        .cat-pill:not(.active):hover { border-color: #FFD200; color: #FFD200; }
         .prod-card {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            transition: transform .3s, box-shadow .3s, border-color .3s;
-            cursor: pointer;
+            position: relative; border-radius: 24px; overflow: hidden;
+            background: #1a1a1a; border: 1px solid #2a2a2a;
+            transition: transform .3s, box-shadow .3s, border-color .3s; cursor: pointer;
         }
-        .prod-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0,0,0,.5);
-            border-color: #FFD200;
-        }
-        .prod-card img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-            display: block;
-            transition: transform .6s;
-        }
+        .prod-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,.5); border-color: #FFD200; }
+        .prod-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; transition: transform .6s; }
         .prod-card:hover img { transform: scale(1.06); }
-        .prod-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
-        }
-        .prod-card-body {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 20px;
-        }
-        .prod-badge {
-            display: inline-block;
-            font-size: .6rem;
-            font-weight: 800;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            color: #FFD200;
-            margin-bottom: 6px;
-        }
-        .prod-name {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.2;
-        }
-        .prod-sub {
-            font-size: .75rem;
-            color: rgba(255,255,255,.55);
-            margin-top: 4px;
-            line-height: 1.4;
-        }
-
-        /* Search */
-        .search-box {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 9999px;
-            padding: 12px 20px 12px 48px;
-            color: #fff;
-            font-size: .9rem;
-            width: 100%;
-            outline: none;
-            transition: border-color .2s;
-        }
+        .prod-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.1) 55%, transparent 100%); }
+        .prod-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; }
+        .prod-badge { display: inline-block; font-size: .6rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #FFD200; margin-bottom: 6px; }
+        .prod-name { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: #fff; line-height: 1.2; }
+        .prod-sub { font-size: .75rem; color: rgba(255,255,255,.55); margin-top: 4px; line-height: 1.4; }
+        .search-box { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 9999px; padding: 12px 20px 12px 48px; color: #fff; font-size: .9rem; width: 100%; outline: none; transition: border-color .2s; }
         .search-box:focus { border-color: #FFD200; }
         .search-box::placeholder { color: #555; }
-
-        /* Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        @media (max-width: 640px) {
-            .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-        }
-
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+        @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; } }
         .count-badge { font-size: .78rem; color: #888; }
-
         .empty-state { display: none; }
         .empty-state.show { display: block; }
     </style>
@@ -125,18 +50,15 @@
 
 <body class="bg-[#111] overflow-x-hidden text-white">
 
-    <!-- ── HEADER ── -->
+    <!-- HEADER -->
     <header class="glass-header h-20 flex items-center">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center group">
-                <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco"
-                    class="brand-logo transition-transform duration-300 group-hover:scale-105">
+                <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="brand-logo transition-transform duration-300 group-hover:scale-105">
             </a>
             <nav class="hidden md:flex items-center gap-8">
                 <a href="index.html" class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Inicio</a>
-                <a href="index.html#servicios" class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Servicios</a>
                 <a href="catalog.html" class="text-sm font-bold text-[#FFD200] transition-colors">Catálogo</a>
-                <a href="index.html#galeria" class="text-sm font-bold text-white hover:text-[#FFD200] transition-colors">Proyectos</a>
                 <a href="index.html#contacto" class="btn-primary py-2 px-6 text-sm">Contratar</a>
             </nav>
             <button id="mobile-menu-toggle" class="md:hidden p-2 text-white hover:text-yellow-400 transition-colors">
@@ -145,7 +67,6 @@
                 </svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="fixed inset-0 bg-black z-[2000] flex flex-col items-center justify-center p-6 translate-x-full transition-transform duration-500 md:hidden">
             <button id="mobile-menu-close" class="absolute top-6 right-6 p-2 text-white hover:text-yellow-400">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,40 +75,33 @@
             </button>
             <nav class="flex flex-col items-center gap-10 text-center">
                 <a href="index.html" class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Inicio</a>
-                <a href="index.html#servicios" class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Servicios</a>
                 <a href="catalog.html" class="mobile-nav-link text-3xl font-heading font-black text-yellow-400">Catálogo</a>
                 <a href="index.html#contacto" class="mobile-nav-link text-3xl font-heading font-black text-white hover:text-yellow-400">Contacto</a>
-                <a href="index.html#contacto" class="btn-primary py-5 px-12 text-xl mt-4">Pide Presupuesto</a>
+                <a href="index.html#contacto" class="btn-primary py-5 px-12 text-xl mt-4">Pedí Presupuesto</a>
             </nav>
         </div>
     </header>
 
-    <!-- ── CATALOG HERO ── -->
+    <!-- HERO -->
     <section class="bg-[#0d0d0d] pt-36 pb-16 md:pb-24 border-b border-white/5" style="padding-top: calc(80px + 3rem);">
         <div class="container mx-auto px-6">
             <div class="max-w-2xl">
                 <p class="text-[#FFD200] font-bold uppercase tracking-widest text-sm mb-4">Colección 2025</p>
-                <h1 class="text-5xl md:text-7xl font-heading font-extrabold leading-tight mb-6">
-                    Catálogo de<br>Revestimientos.
-                </h1>
-                <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
-                    Renovación sin obra, en un día. Explorá nuestra selección completa de vinilos premium importados — maderas, mármoles, cristales, piedras y más.
-                </p>
+                <h1 class="text-5xl md:text-7xl font-heading font-extrabold leading-tight mb-6">Catálogo de<br>Revestimientos.</h1>
+                <p class="text-slate-400 text-lg leading-relaxed max-w-xl">Renovación sin obra, en un día. Explorá nuestra selección completa de vinilos premium importados — maderas, mármoles, cristales, piedras y más.</p>
             </div>
         </div>
     </section>
 
-    <!-- ── CONTROLS (sticky) ── -->
+    <!-- CONTROLS -->
     <section class="sticky top-20 z-50 bg-[#111]/95 backdrop-blur border-b border-white/5 py-4">
         <div class="container mx-auto px-6 flex flex-col md:flex-row gap-4 items-center">
-            <!-- Search -->
             <div class="relative w-full md:max-w-xs">
                 <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#555]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                 </svg>
                 <input type="text" id="search" class="search-box" placeholder="Buscar material...">
             </div>
-            <!-- Filter pills -->
             <div class="flex flex-wrap gap-2 flex-1">
                 <button class="cat-pill active px-5 py-2 rounded-full border border-white/20 text-sm font-bold" data-cat="ALL">Todos</button>
                 <button class="cat-pill px-5 py-2 rounded-full border border-white/20 text-sm font-bold text-white" data-cat="CRYSTAL">Crystal</button>
@@ -201,50 +115,43 @@
         </div>
     </section>
 
-    <!-- ── PRODUCTS GRID ── -->
+    <!-- GRID -->
     <section class="py-10 md:py-16 bg-[#111]">
         <div class="container mx-auto px-6">
             <div class="products-grid" id="grid"></div>
             <div class="empty-state text-center py-24" id="empty">
                 <p class="text-slate-500 text-xl font-bold">Ningún material coincide con tu búsqueda.</p>
-                <button onclick="resetFilters()" class="mt-6 px-8 py-3 bg-[#FFD200] text-black font-bold rounded-full hover:bg-yellow-300 transition-all">
-                    Ver todos
-                </button>
+                <button onclick="resetFilters()" class="mt-6 px-8 py-3 bg-[#FFD200] text-black font-bold rounded-full hover:bg-yellow-300 transition-all">Ver todos</button>
             </div>
         </div>
     </section>
 
-    <!-- ── CTA BAND ── -->
+    <!-- CTA -->
     <section class="bg-[#FFD200] py-16">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
                 <h2 class="text-3xl md:text-4xl font-heading font-black text-black">¿Encontraste tu textura?</h2>
                 <p class="text-black/70 mt-2 text-lg">Pedí tu presupuesto sin cargo — te contactamos en menos de 1 hora.</p>
             </div>
-            <a href="https://wa.me/5491130212683" target="_blank"
-                class="inline-flex items-center gap-3 bg-black text-[#FFD200] font-black py-4 px-10 rounded-full text-lg hover:bg-slate-800 transition-all whitespace-nowrap flex-shrink-0">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.991c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
+            <a href="https://wa.me/5491130212683" target="_blank" class="inline-flex items-center gap-3 bg-black text-[#FFD200] font-black py-4 px-10 rounded-full text-lg hover:bg-slate-800 transition-all whitespace-nowrap flex-shrink-0">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.991c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Consultar por WhatsApp
             </a>
         </div>
     </section>
 
-    <!-- ── FOOTER ── -->
+    <!-- FOOTER -->
     <footer class="bg-black text-white py-20 border-t border-white/5">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
             <div class="col-span-1 md:col-span-2 space-y-6 flex flex-col items-center md:items-start">
-                <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="h-12 w-auto">
-                <p class="text-slate-400 max-w-sm text-lg leading-relaxed">
-                    Transformamos tus espacios con revestimientos de vinilo de alta gama. Rapidez, limpieza y diseño excepcional.
-                </p>
-                <a href="https://instagram.com/coverall.deco" target="_blank"
-                    class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FFD200] hover:text-black transition-all">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
+                <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="h-16 w-auto">
+                <p class="text-slate-400 max-w-sm text-lg leading-relaxed">Transformamos tus espacios con revestimientos de vinilo de alta gama. Rapidez, limpieza y diseño excepcional.</p>
+                <div class="flex items-center gap-3">
+                    <a href="https://instagram.com/coverall.deco" target="_blank" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FFD200] hover:text-black transition-all">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://instagram.com/coverall.deco" target="_blank" class="text-slate-400 hover:text-white transition-colors">@coverall.deco</a>
+                </div>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-6 text-[#FFD200]">Navegación</h4>
@@ -263,7 +170,163 @@
                         <a href="mailto:hola@coveralldeco.com.ar" class="hover:text-white transition-colors">hola@coveralldeco.com.ar</a>
                     </li>
                     <li class="flex items-center justify-center md:justify-start gap-3">
-                        <a href="https://instagram.com/coverall.deco" target="_blank"
-                            class="w-9 h-9 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FFD200] hover:text-black transition-all">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.
+                        <svg class="w-5 h-5 text-[#FFD200]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <a href="https://instagram.com/coverall.deco" target="_blank" class="hover:text-white transition-colors">@coverall.deco</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/5 mt-16 pt-8 text-center text-slate-500 text-sm">&copy; 2026 COVERALLDECO. Todos los derechos reservados.</div>
+    </footer>
+
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/5491130212683" class="whatsapp-btn" target="_blank">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.991c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="scripts/animations.js"></script>
+    <script>
+    const PRODUCTS = [
+      {id:"crystal_jateado",cat:"CRYSTAL",img:"imagenes/catalogo/crystal_jateado.jpg",name:"Crystal Esmerilado",sub:"Luz difusa para ambientes de autor"},
+      {id:"crystal_quadra",cat:"CRYSTAL",img:"imagenes/catalogo/crystal_quadra.jpg",name:"Crystal Cuadros",sub:"Geometría sutil de inspiración contemporánea"},
+      {id:"crystal_condessa",cat:"CRYSTAL",img:"imagenes/catalogo/crystal_condessa.jpg",name:"Crystal Condesa",sub:"Transparencia elegante de origen europeo"},
+      {id:"crystal_carbonium",cat:"CRYSTAL",img:"imagenes/catalogo/crystal_carbonium.jpg",name:"Crystal Carbonio",sub:"Oscuridad sofisticada para espacios únicos"},
+      {id:"crystal_krusher",cat:"CRYSTAL",img:"imagenes/catalogo/crystal_krusher.jpg",name:"Crystal Krusher",sub:"Textura vibrante con impacto visual"},
+      {id:"crystal_rave",cat:"CRYSTAL",img:"imagenes/catalogo/crystal_rave.jpg",name:"Crystal Rave",sub:"Dinamismo contenido para superficies con carácter"},
+      {id:"crystal_tropical",cat:"CRYSTAL",img:"imagenes/catalogo/crystal_tropical.jpg",name:"Crystal Jardín Tropical",sub:"Naturaleza premium para espacios que sorprenden"},
+      {id:"wood_burl",cat:"WOOD",img:"imagenes/catalogo/wood_burl.jpg",name:"Burl",sub:"Veta única de raíz, para espacios irrepetibles"},
+      {id:"wood_capuccino",cat:"WOOD",img:"imagenes/catalogo/wood_capuccino.jpg",name:"Roble Capuccino",sub:"Calidez profunda en tonos terrosos"},
+      {id:"wood_inovata",cat:"WOOD",img:"imagenes/catalogo/wood_inovata.jpg",name:"Roble Inovata",sub:"Roble contemporáneo de acabado satinado"},
+      {id:"wood_verona",cat:"WOOD",img:"imagenes/catalogo/wood_verona.jpg",name:"Roble Verona",sub:"Inspiración italiana en cada línea"},
+      {id:"wood_sevilla",cat:"WOOD",img:"imagenes/catalogo/wood_sevilla.jpg",name:"Demolición Sevilla",sub:"Historia y textura para interiores con alma"},
+      {id:"wood_salamanca",cat:"WOOD",img:"imagenes/catalogo/wood_salamanca.jpg",name:"Rústica Salamanca",sub:"Lo artesanal elevado a premium"},
+      {id:"wood_cadiz",cat:"WOOD",img:"imagenes/catalogo/wood_cadiz.jpg",name:"Rústica Cádiz",sub:"Carácter mediterráneo con sofisticación"},
+      {id:"wood_barcelona",cat:"WOOD",img:"imagenes/catalogo/wood_barcelona.jpg",name:"Demolición Barcelona",sub:"Madera con memoria para espacios únicos"},
+      {id:"wood_pamplona",cat:"WOOD",img:"imagenes/catalogo/wood_pamplona.jpg",name:"Roble Pamplona",sub:"Elegancia nórdica con raíces ibéricas"},
+      {id:"wood_tenerife",cat:"WOOD",img:"imagenes/catalogo/wood_tenerife.jpg",name:"Roble Tenerife",sub:"Veteado natural de acabado superior"},
+      {id:"wood_vigo",cat:"WOOD",img:"imagenes/catalogo/wood_vigo.jpg",name:"Listones Vigo",sub:"Ritmo vertical para espacios modernos"},
+      {id:"wood_lugo",cat:"WOOD",img:"imagenes/catalogo/wood_lugo.jpg",name:"Listones Lugo",sub:"Textura cálida para espacios contemporáneos"},
+      {id:"wood_burgo",cat:"WOOD",img:"imagenes/catalogo/wood_burgo.jpg",name:"Listones Burgo",sub:"Ritmo y calidez en madera de alto diseño"},
+      {id:"wood_galicia",cat:"WOOD",img:"imagenes/catalogo/wood_galicia.jpg",name:"Fresno Galicia",sub:"Veta fina y luminosa, elegancia natural"},
+      {id:"wood_asturias",cat:"WOOD",img:"imagenes/catalogo/wood_asturias.jpg",name:"Fresno Asturias",sub:"Claridad y calidez del bosque atlántico"},
+      {id:"wood_toledo",cat:"WOOD",img:"imagenes/catalogo/wood_toledo.jpg",name:"Fresno Toledo",sub:"Madera premium de acabado refinado"},
+      {id:"lisboa",cat:"ESTAMPADOS",img:"imagenes/catalogo/lisboa.jpg",name:"Lisboa",sub:"Azulejo reinterpretado en clave contemporánea"},
+      {id:"porto",cat:"ESTAMPADOS",img:"imagenes/catalogo/porto.jpg",name:"Porto",sub:"Geometría portuguesa de inspiración atemporal"},
+      {id:"metro_matte",cat:"ESTAMPADOS",img:"imagenes/catalogo/metro_matte.jpg",name:"Metro Blanco Mate",sub:"Pureza clásica para ambientes sin tiempo"},
+      {id:"metro_gloss",cat:"ESTAMPADOS",img:"imagenes/catalogo/metro_gloss.jpg",name:"Metro Blanco Brillante",sub:"Reflexión luminosa para cocinas de diseño"},
+      {id:"rhapsody",cat:"ESTAMPADOS",img:"imagenes/catalogo/rhapsody.jpg",name:"Rhapsody",sub:"Movimiento abstracto para paredes con carácter"},
+      {id:"jardim_vertical",cat:"ESTAMPADOS",img:"imagenes/catalogo/jardim_vertical.jpg",name:"Jardín Vertical",sub:"Naturaleza vertical para interiores que respiran"},
+      {id:"jardim_tropical",cat:"ESTAMPADOS",img:"imagenes/catalogo/jardim_tropical.jpg",name:"Jardín Tropical",sub:"Exuberancia contenida para espacios con vida"},
+      {id:"brick_white",cat:"PEDRAS",img:"imagenes/catalogo/brick_white.jpg",name:"Ladrillo Blanco",sub:"Industrial refinado para espacios urbanos"},
+      {id:"brick_red",cat:"PEDRAS",img:"imagenes/catalogo/brick_red.jpg",name:"Ladrillo Rojo",sub:"Calidez raw para interiores con carácter"},
+      {id:"brick_black",cat:"PEDRAS",img:"imagenes/catalogo/brick_black.jpg",name:"Ladrillo Negro",sub:"Oscuridad sofisticada de inspiración loft"},
+      {id:"brick_london",cat:"PEDRAS",img:"imagenes/catalogo/brick_london.jpg",name:"Ladrillo London",sub:"Elegancia británica para ambientes con historia"},
+      {id:"concrete",cat:"PEDRAS",img:"imagenes/catalogo/concrete.jpg",name:"Concreto",sub:"Pureza gris para el minimalismo moderno"},
+      {id:"marble_nero",cat:"PEDRAS",img:"imagenes/catalogo/marble_nero.jpg",name:"Nero",sub:"Oscuridad total. Lujo absoluto"},
+      {id:"marble_bianco",cat:"PEDRAS",img:"imagenes/catalogo/marble_bianco.jpg",name:"Bianco",sub:"Pureza del mármol clásico de Carrara"},
+      {id:"marble_lunare_matte",cat:"PEDRAS",img:"imagenes/catalogo/marble_lunare_matte.jpg",name:"Lunar Mate",sub:"Suavidad lunar para espacios contemplativos"},
+      {id:"marble_lunare_gloss",cat:"PEDRAS",img:"imagenes/catalogo/marble_lunare_gloss.jpg",name:"Lunar Brillante",sub:"Reflejo suave de luz indirecta"},
+      {id:"marble_marquina_gloss",cat:"PEDRAS",img:"imagenes/catalogo/marble_marquina_gloss.jpg",name:"Marquina Brillante",sub:"Negro intenso con veta blanca. Lujo total"},
+      {id:"marble_marquina_matte",cat:"PEDRAS",img:"imagenes/catalogo/marble_marquina_matte.jpg",name:"Marquina Mate",sub:"Opulencia oscura en acabado mate"},
+      {id:"marble_calacatta_gloss",cat:"PEDRAS",img:"imagenes/catalogo/marble_calacatta_gloss.jpg",name:"Calacatta Oro Brillante",sub:"El rey del mármol italiano en su máximo esplendor"},
+      {id:"marble_calacatta_matte",cat:"PEDRAS",img:"imagenes/catalogo/marble_calacatta_matte.jpg",name:"Calacatta Oro Mate",sub:"Calacatta en versión mate. Lujo contenido"},
+      {id:"marble_crema_gloss",cat:"PEDRAS",img:"imagenes/catalogo/marble_crema_gloss.jpg",name:"Crema Marfil Brillante",sub:"Calidez mediterránea en tono marfil"},
+      {id:"marble_crema_matte",cat:"PEDRAS",img:"imagenes/catalogo/marble_crema_matte.jpg",name:"Crema Marfil Mate",sub:"Sutileza crema para ambientes serenos"},
+      {id:"marble_grigio_gloss",cat:"PEDRAS",img:"imagenes/catalogo/marble_grigio_gloss.jpg",name:"Grigio Brillante",sub:"Gris arquitectónico con profundidad"},
+      {id:"marble_grigio_matte",cat:"PEDRAS",img:"imagenes/catalogo/marble_grigio_matte.jpg",name:"Grigio Mate",sub:"Minimalismo gris de diseño contemporáneo"},
+      {id:"marble_tivoli",cat:"PEDRAS",img:"imagenes/catalogo/marble_tivoli.jpg",name:"Tivoli",sub:"Veladuras suaves del mármol clásico italiano"},
+      {id:"lombarda_cenere_gloss",cat:"PEDRAS",img:"imagenes/catalogo/lombarda_cenere_gloss.jpg",name:"Lombarda Ceniza Brillante",sub:"Ceniza viva para superficies con presencia"},
+      {id:"lombarda_cenere_matte",cat:"PEDRAS",img:"imagenes/catalogo/lombarda_cenere_matte.jpg",name:"Lombarda Ceniza Mate",sub:"Elegancia gris en acabado mate absoluto"},
+      {id:"lombarda_sabbia_gloss",cat:"PEDRAS",img:"imagenes/catalogo/lombarda_sabbia_gloss.jpg",name:"Lombarda Arena Brillante",sub:"Calidez de arena con brillo contenido"},
+      {id:"lombarda_sabbia_matte",cat:"PEDRAS",img:"imagenes/catalogo/lombarda_sabbia_matte.jpg",name:"Lombarda Arena Mate",sub:"Textura cálida para espacios sin tiempo"},
+      {id:"tramatto_beige",cat:"PEDRAS",img:"imagenes/catalogo/tramatto_beige.jpg",name:"Tramatto Beige",sub:"Travertino reinterpretado para el presente"},
+      {id:"tramatto_gris",cat:"PEDRAS",img:"imagenes/catalogo/tramatto_gris.jpg",name:"Tramatto Gris",sub:"Piedra contemporánea para espacios de diseño"},
+      {id:"deck_valencia",cat:"PISOTAK",img:"imagenes/catalogo/deck_valencia.jpg",name:"Deck Valencia",sub:"Madera exterior premium para terrazas de autor"},
+      {id:"deck_madri",cat:"PISOTAK",img:"imagenes/catalogo/deck_madri.jpg",name:"Deck Madrid",sub:"Suelo de diseño para espacios al aire libre"},
+      {id:"kroma_avila",cat:"KROMA",img:"imagenes/catalogo/kroma_avila.jpg",name:"Kroma Ávila",sub:"Roble estructurado para espacios cálidos"},
+      {id:"kroma_lerida",cat:"KROMA",img:"imagenes/catalogo/kroma_lerida.jpg",name:"Kroma Lérida",sub:"Madera fina para interiores de diseño"},
+      {id:"kroma_segovia",cat:"KROMA",img:"imagenes/catalogo/kroma_segovia.jpg",name:"Kroma Segovia",sub:"Calidez castellana en superficie premium"},
+      {id:"kroma_bilbao",cat:"KROMA",img:"imagenes/catalogo/kroma_bilbao.jpg",name:"Kroma Bilbao",sub:"Vanguardia vasca en acabado contemporáneo"},
+      {id:"kroma_teruel",cat:"KROMA",img:"imagenes/catalogo/kroma_teruel.jpg",name:"Kroma Teruel",sub:"Textura terrosa para espacios con carácter"},
+      {id:"kroma_branco_artico",cat:"KROMA",img:"imagenes/catalogo/kroma_branco_artico.jpg",name:"Blanco Ártico",sub:"Pureza polar para interiores luminosos"},
+      {id:"kroma_cinza_fossil",cat:"KROMA",img:"imagenes/catalogo/kroma_cinza_fossil.jpg",name:"Gris Fossil",sub:"Gris orgánico para ambientes modernos"},
+      {id:"kroma_preto_absoluto",cat:"KROMA",img:"imagenes/catalogo/kroma_preto_absoluto.jpg",name:"Negro Absoluto",sub:"Oscuridad total para espacios de impacto"},
+      {id:"kroma_argento",cat:"KROMA",img:"imagenes/catalogo/kroma_argento.jpg",name:"Plateado",sub:"Metálico sutil para superficies contemporáneas"},
+      {id:"kroma_azul_petroleo",cat:"KROMA",img:"imagenes/catalogo/kroma_azul_petroleo.jpg",name:"Azul Petróleo",sub:"Profundidad oceánica para espacios únicos"},
+      {id:"kroma_verde_primavera",cat:"KROMA",img:"imagenes/catalogo/kroma_verde_primavera.jpg",name:"Verde Primavera",sub:"Naturaleza viva en acabado premium"},
+      {id:"kroma_grafite",cat:"KROMA",img:"imagenes/catalogo/kroma_grafite.jpg",name:"Grafito",sub:"Oscuridad urbana para diseño contemporáneo"},
+      {id:"kroma_aveia",cat:"KROMA",img:"imagenes/catalogo/kroma_aveia.jpg",name:"Avena",sub:"Neutralidad cálida para espacios serenos"},
+      {id:"kroma_fendi",cat:"KROMA",img:"imagenes/catalogo/kroma_fendi.jpg",name:"Fendi",sub:"Elegancia italiana en tono arena oscuro"},
+      {id:"kroma_gamboge",cat:"KROMA",img:"imagenes/catalogo/kroma_gamboge.jpg",name:"Gamboge",sub:"Ocre vibrante para espacios con personalidad"},
+      {id:"kroma_olaria",cat:"KROMA",img:"imagenes/catalogo/kroma_olaria.jpg",name:"Alfarería",sub:"Tierra cocida para interiores con historia"},
+      {id:"kroma_merlot",cat:"KROMA",img:"imagenes/catalogo/kroma_merlot.jpg",name:"Merlot",sub:"Intensidad vinícola para superficies audaces"},
+      {id:"kroma_verde_oliva",cat:"KROMA",img:"imagenes/catalogo/kroma_verde_oliva.jpg",name:"Verde Oliva",sub:"Verde mediterráneo de sofisticación natural"},
+      {id:"kroma_falesia",cat:"KROMA",img:"imagenes/catalogo/kroma_falesia.jpg",name:"Acantilado",sub:"Terracota suave del litoral atlántico"},
+      {id:"kroma_avorio",cat:"KROMA",img:"imagenes/catalogo/kroma_avorio.jpg",name:"Marfil",sub:"Tono marfil atemporal para ambientes serenos"},
+      {id:"kroma_rattan",cat:"KROMA",img:"imagenes/catalogo/kroma_rattan.jpg",name:"Ratán Off White",sub:"Textura artesanal en tono crema natural"},
+      {id:"kroma_cuoro",cat:"KROMA",img:"imagenes/catalogo/kroma_cuoro.jpg",name:"Cuero Off White",sub:"Piel sutil en versión minimalista y luminosa"},
+      {id:"kroma_malbec",cat:"KROMA",img:"imagenes/catalogo/kroma_malbec.jpg",name:"Malbec",sub:"Vino oscuro para espacios de carácter propio"}
+    ];
+
+    const CAT_LABELS = {CRYSTAL:'Crystal',WOOD:'Wood',ESTAMPADOS:'Estampados',PEDRAS:'Mármoles',PISOTAK:'Pisotak',KROMA:'Kroma'};
+    let activeCat = 'ALL', query = '';
+
+    function getFiltered() {
+      let list = PRODUCTS;
+      if (activeCat !== 'ALL') list = list.filter(p => p.cat === activeCat);
+      if (query) list = list.filter(p => p.name.toLowerCase().includes(query) || (CAT_LABELS[p.cat]||'').toLowerCase().includes(query));
+      return list;
+    }
+
+    function render() {
+      const list = getFiltered();
+      const grid = document.getElementById('grid');
+      const empty = document.getElementById('empty');
+      document.getElementById('count').textContent = list.length;
+      if (!list.length) { grid.innerHTML = ''; empty.classList.add('show'); return; }
+      empty.classList.remove('show');
+      grid.innerHTML = list.map(p => `
+        <div class="prod-card" onclick="window.open('https://wa.me/5491130212683?text=Hola!%20Me%20interesa%20el%20material%20${encodeURIComponent(p.name)}','_blank')">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='imagenes/catalogo/placeholder.jpg'">
+          <div class="prod-card-overlay"></div>
+          <div class="prod-card-body">
+            <span class="prod-badge">${CAT_LABELS[p.cat]||p.cat}</span>
+            <div class="prod-name">${p.name}</div>
+            <div class="prod-sub">${p.sub}</div>
+          </div>
+        </div>`).join('');
+    }
+
+    function resetFilters() {
+      activeCat = 'ALL'; query = '';
+      document.getElementById('search').value = '';
+      document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-cat="ALL"]').classList.add('active');
+      render();
+    }
+
+    document.querySelectorAll('.cat-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCat = btn.dataset.cat;
+        render();
+      });
+    });
+
+    document.getElementById('search').addEventListener('input', e => {
+      query = e.target.value.trim().toLowerCase();
+      render();
+    });
+
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.remove('translate-x-full');
+    });
+    document.getElementById('mobile-menu-close').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('translate-x-full');
+    });
+
+    render();
+    </script>
+</body>
+</html>
