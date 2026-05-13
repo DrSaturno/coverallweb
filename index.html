@@ -421,13 +421,60 @@
     <!-- Furniture Section -->
     <section class="py-0 bg-slate-950 text-white relative overflow-hidden">
         <div class="container mx-auto px-0 grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
-            <!-- Image side -->
-            <div class="relative h-72 lg:h-auto order-first">
-                <img src="imagenes/seccion-muebles.jpg"
-                    onerror="this.src='imagenes/catalogo/wood_burgo.jpg'"
-                    class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-transparent lg:block hidden"></div>
+            <!-- Image side — Slider muebles -->
+            <div class="relative h-72 lg:h-auto order-first overflow-hidden" id="muebles-slider">
+                <!-- Slides -->
+                <div id="muebles-track" class="flex h-full transition-transform duration-700 ease-in-out">
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble1.png" class="w-full h-full object-cover" alt="Mueble renovado 1"></div>
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble2.png" class="w-full h-full object-cover" alt="Mueble renovado 2"></div>
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble3.png" class="w-full h-full object-cover" alt="Mueble renovado 3"></div>
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble4.webp" class="w-full h-full object-cover" alt="Mueble renovado 4"></div>
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble5.png" class="w-full h-full object-cover" alt="Mueble renovado 5"></div>
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble6.png" class="w-full h-full object-cover" alt="Mueble renovado 6"></div>
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble7.png" class="w-full h-full object-cover" alt="Mueble renovado 7"></div>
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble8.png" class="w-full h-full object-cover" alt="Mueble renovado 8"></div>
+                    <div class="slide-item min-w-full h-full"><img src="imagenes/mueble9.png" class="w-full h-full object-cover" alt="Mueble renovado 9"></div>
+                </div>
+                <!-- Gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-transparent lg:block hidden pointer-events-none"></div>
+                <!-- Arrows -->
+                <button onclick="mueblesPrev()" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all backdrop-blur-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button onclick="mueblesNext()" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all backdrop-blur-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                </button>
+                <!-- Dots -->
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10" id="muebles-dots"></div>
             </div>
+            <script>
+            (function(){
+                const TOTAL = 9;
+                let cur = 0, timer;
+                const track = document.getElementById('muebles-track');
+                const dotsWrap = document.getElementById('muebles-dots');
+
+                // Build dots
+                for(let i=0;i<TOTAL;i++){
+                    const d = document.createElement('button');
+                    d.className = 'w-1.5 h-1.5 rounded-full transition-all duration-300 ' + (i===0?'bg-white scale-125':'bg-white/40');
+                    d.onclick = ()=>goTo(i);
+                    dotsWrap.appendChild(d);
+                }
+
+                function goTo(n){
+                    cur = (n + TOTAL) % TOTAL;
+                    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+                    dotsWrap.querySelectorAll('button').forEach((d,i)=>{
+                        d.className = 'w-1.5 h-1.5 rounded-full transition-all duration-300 ' + (i===cur?'bg-white scale-125':'bg-white/40');
+                    });
+                }
+                window.mueblesNext = ()=>{ goTo(cur+1); resetTimer(); };
+                window.mueblesPrev = ()=>{ goTo(cur-1); resetTimer(); };
+                function resetTimer(){ clearInterval(timer); timer=setInterval(()=>goTo(cur+1),3500); }
+                resetTimer();
+            })();
+            </script>
             <!-- Text side -->
             <div class="flex flex-col justify-center px-10 md:px-16 py-16 reveal">
                 <span class="text-yellow-400 font-bold uppercase tracking-widest text-sm mb-4">Rescate de Mobiliario</span>
