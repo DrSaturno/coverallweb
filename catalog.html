@@ -21,37 +21,95 @@
     <script src="scripts/tailwind-config.js"></script>
     <link rel="stylesheet" href="scripts/main.css">
     <style>
+        /* ── Filter pills ── */
         .cat-pill { cursor: pointer; transition: all .2s; }
         .cat-pill.active { background: #FFD200; color: #000; border-color: #FFD200; }
         .cat-pill:not(.active):hover { border-color: #FFD200; color: #FFD200; }
+
+        /* ── Product cards ── */
         .prod-card {
-            position: relative; border-radius: 24px; overflow: hidden;
-            background: #1a1a1a; border: 1px solid #2a2a2a;
-            transition: transform .3s, box-shadow .3s, border-color .3s; cursor: pointer;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            transition: transform .3s, box-shadow .3s, border-color .3s;
+            cursor: pointer;
         }
-        .prod-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,.5); border-color: #FFD200; }
-        .prod-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; transition: transform .6s; }
+        .prod-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,.6); border-color: #FFD200; }
+        .prod-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; transition: transform .6s; }
         .prod-card:hover img { transform: scale(1.06); }
-        .prod-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.1) 55%, transparent 100%); }
-        .prod-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; }
-        .prod-badge { display: inline-block; font-size: .6rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #FFD200; margin-bottom: 6px; }
-        .prod-name { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: #fff; line-height: 1.2; }
-        .prod-sub { font-size: .75rem; color: rgba(255,255,255,.55); margin-top: 4px; line-height: 1.4; }
-        .search-box { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 9999px; padding: 12px 20px 12px 48px; color: #fff; font-size: .9rem; width: 100%; outline: none; transition: border-color .2s; }
+        .prod-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.15) 55%, transparent 100%); }
+        .prod-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; }
+        .prod-badge { display: inline-block; font-size: .65rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #FFD200; margin-bottom: 8px; }
+        .prod-name { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; line-height: 1.25; }
+        .prod-sub { font-size: .8rem; color: rgba(255,255,255,.6); margin-top: 6px; line-height: 1.45; }
+        .prod-wa {
+            display: inline-flex; align-items: center; gap-6px; margin-top: 14px;
+            font-size: .75rem; font-weight: 700; color: #FFD200;
+            opacity: 0; transform: translateY(6px); transition: all .25s;
+        }
+        .prod-card:hover .prod-wa { opacity: 1; transform: translateY(0); }
+
+        /* ── Grid ── */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        @media (max-width: 640px) {
+            .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .prod-name { font-size: 1rem; }
+        }
+
+        /* ── Search ── */
+        .search-box {
+            background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 9999px;
+            padding: 12px 20px 12px 48px; color: #fff; font-size: .9rem; width: 100%;
+            outline: none; transition: border-color .2s;
+        }
         .search-box:focus { border-color: #FFD200; }
         .search-box::placeholder { color: #555; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-        @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; } }
         .count-badge { font-size: .78rem; color: #888; }
         .empty-state { display: none; }
         .empty-state.show { display: block; }
+
+        /* ── Catalog hero ── */
+        .catalog-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 520px;
+        }
+        @media (max-width: 768px) {
+            .catalog-hero { grid-template-columns: 1fr; }
+            .catalog-hero-img { display: none; }
+        }
+        .catalog-hero-text {
+            background: #FFD200;
+            padding: 120px 64px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        @media (max-width: 1024px) {
+            .catalog-hero-text { padding: 100px 40px 60px; }
+        }
+        .catalog-hero-img {
+            position: relative;
+            overflow: hidden;
+        }
+        .catalog-hero-img img {
+            width: 100%; height: 100%; object-fit: cover; object-position: center;
+            transition: transform 8s ease;
+        }
+        .catalog-hero-img:hover img { transform: scale(1.04); }
     </style>
 </head>
 
 <body class="bg-[#111] overflow-x-hidden text-white">
 
-    <!-- HEADER -->
-    <header class="glass-header h-20 flex items-center">
+    <!-- ── HEADER ── -->
+    <header class="glass-header h-20 flex items-center fixed top-0 left-0 right-0 z-[100]">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center group">
                 <img src="imagenes/logoamarillocompleto.png" alt="Coveralldeco" class="brand-logo transition-transform duration-300 group-hover:scale-105">
@@ -67,6 +125,7 @@
                 </svg>
             </button>
         </div>
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="fixed inset-0 bg-black z-[2000] flex flex-col items-center justify-center p-6 translate-x-full transition-transform duration-500 md:hidden">
             <button id="mobile-menu-close" class="absolute top-6 right-6 p-2 text-white hover:text-yellow-400">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,18 +141,31 @@
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="bg-[#0d0d0d] pt-36 pb-16 md:pb-24 border-b border-white/5" style="padding-top: calc(80px + 3rem);">
-        <div class="container mx-auto px-6">
-            <div class="max-w-2xl">
-                <p class="text-[#FFD200] font-bold uppercase tracking-widest text-sm mb-4">Colección 2025</p>
-                <h1 class="text-5xl md:text-7xl font-heading font-extrabold leading-tight mb-6">Catálogo de<br>Revestimientos.</h1>
-                <p class="text-slate-400 text-lg leading-relaxed max-w-xl">Renovación sin obra, en un día. Explorá nuestra selección completa de vinilos premium importados — maderas, mármoles, cristales, piedras y más.</p>
+    <!-- ── CATALOG HERO: mitad amarilla + mitad imagen ── -->
+    <div class="catalog-hero mt-20">
+        <div class="catalog-hero-text">
+            <p class="text-black/60 font-bold uppercase tracking-widest text-sm mb-4">Colección 2025</p>
+            <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-black leading-tight mb-6">
+                Catálogo de<br>Revestimientos.
+            </h1>
+            <p class="text-black/70 text-lg leading-relaxed max-w-md">
+                Renovación sin obra, en un día. Explorá nuestra selección completa de vinilos premium importados — maderas, mármoles, cristales, piedras y más.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-8">
+                <a href="index.html#contacto" class="inline-flex items-center gap-2 bg-black text-[#FFD200] font-black py-3 px-8 rounded-full hover:bg-slate-800 transition-all">
+                    Empezar Proyecto
+                </a>
+                <a href="#grid" class="inline-flex items-center gap-2 border-2 border-black text-black font-black py-3 px-8 rounded-full hover:bg-black/10 transition-all">
+                    Ver todo el catálogo
+                </a>
             </div>
         </div>
-    </section>
+        <div class="catalog-hero-img">
+            <img src="imagenes/c1.jpg" alt="Revestimientos premium" onerror="this.src='imagenes/seccion-living.jpg'">
+        </div>
+    </div>
 
-    <!-- CONTROLS -->
+    <!-- ── CONTROLS (sticky) ── -->
     <section class="sticky top-20 z-50 bg-[#111]/95 backdrop-blur border-b border-white/5 py-4">
         <div class="container mx-auto px-6 flex flex-col md:flex-row gap-4 items-center">
             <div class="relative w-full md:max-w-xs">
@@ -115,8 +187,8 @@
         </div>
     </section>
 
-    <!-- GRID -->
-    <section class="py-10 md:py-16 bg-[#111]">
+    <!-- ── PRODUCTS GRID ── -->
+    <section class="py-12 md:py-20 bg-[#111]">
         <div class="container mx-auto px-6">
             <div class="products-grid" id="grid"></div>
             <div class="empty-state text-center py-24" id="empty">
@@ -126,7 +198,7 @@
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ── CTA ── -->
     <section class="bg-[#FFD200] py-16">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
@@ -140,7 +212,7 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ── FOOTER ── -->
     <footer class="bg-black text-white py-20 border-t border-white/5">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
             <div class="col-span-1 md:col-span-2 space-y-6 flex flex-col items-center md:items-start">
@@ -287,12 +359,13 @@
       empty.classList.remove('show');
       grid.innerHTML = list.map(p => `
         <div class="prod-card" onclick="window.open('https://wa.me/5491130212683?text=Hola!%20Me%20interesa%20el%20material%20${encodeURIComponent(p.name)}','_blank')">
-          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='imagenes/catalogo/placeholder.jpg'">
+          <img src="${p.img}" alt="${p.name}" loading="lazy">
           <div class="prod-card-overlay"></div>
           <div class="prod-card-body">
             <span class="prod-badge">${CAT_LABELS[p.cat]||p.cat}</span>
             <div class="prod-name">${p.name}</div>
             <div class="prod-sub">${p.sub}</div>
+            <div class="prod-wa">Consultar por WhatsApp →</div>
           </div>
         </div>`).join('');
     }
