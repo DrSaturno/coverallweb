@@ -16,93 +16,318 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="scripts/tailwind-config.js"></script>
     <link rel="stylesheet" href="scripts/main.css">
     <style>
-        /* ── Filter pills ── */
-        .cat-pill { cursor: pointer; transition: all .2s; }
-        .cat-pill.active { background: #FFD200; color: #000; border-color: #FFD200; }
-        .cat-pill:not(.active):hover { border-color: #FFD200; color: #FFD200; }
-
-        /* ── Product cards ── */
-        .prod-card {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            transition: transform .3s, box-shadow .3s, border-color .3s;
-            cursor: pointer;
-        }
-        .prod-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,.6); border-color: #FFD200; }
-        .prod-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; transition: transform .6s; }
-        .prod-card:hover img { transform: scale(1.06); }
-        .prod-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.15) 55%, transparent 100%); }
-        .prod-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; }
-        .prod-badge { display: inline-block; font-size: .65rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #FFD200; margin-bottom: 8px; }
-        .prod-name { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; line-height: 1.25; }
-        .prod-sub { font-size: .8rem; color: rgba(255,255,255,.6); margin-top: 6px; line-height: 1.45; }
-        .prod-wa {
-            display: inline-flex; align-items: center; gap-6px; margin-top: 14px;
-            font-size: .75rem; font-weight: 700; color: #FFD200;
-            opacity: 0; transform: translateY(6px); transition: all .25s;
-        }
-        .prod-card:hover .prod-wa { opacity: 1; transform: translateY(0); }
-
-        /* ── Grid ── */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        @media (max-width: 640px) {
-            .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .prod-name { font-size: 1rem; }
+        /* ─── CSS VARS ────────────────────────────────── */
+        :root {
+          --yellow:    #FFD200;
+          --black:     #0d0d0d;
+          --bg:        #111111;
+          --surface:   #1a1a1a;
+          --border:    #2a2a2a;
+          --border2:   #333333;
+          --text:      #ffffff;
+          --muted:     #888888;
+          --muted2:    #555555;
+          --font-head: 'Outfit', sans-serif;
+          --font-body: 'Inter', sans-serif;
+          --ease:      cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
-        /* ── Search ── */
-        .search-box {
-            background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 9999px;
-            padding: 12px 20px 12px 48px; color: #fff; font-size: .9rem; width: 100%;
-            outline: none; transition: border-color .2s;
+        /* ─── HERO ────────────────────────────────────── */
+        .cat-hero {
+          display: flex;
+          min-height: 100svh;
+          padding-top: 80px; /* compensate fixed header height */
+          background: var(--yellow);
         }
-        .search-box:focus { border-color: #FFD200; }
-        .search-box::placeholder { color: #555; }
-        .count-badge { font-size: .78rem; color: #888; }
-        .empty-state { display: none; }
-        .empty-state.show { display: block; }
+        .cat-hero-left {
+          flex: 1 1 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 64px 64px 64px 64px;
+        }
+        .cat-hero-eyebrow {
+          font-family: var(--font-body);
+          font-size: 0.68rem;
+          font-weight: 600;
+          letter-spacing: 0.24em;
+          text-transform: uppercase;
+          color: rgba(0,0,0,.5);
+          margin-bottom: 24px;
+        }
+        .cat-hero-title {
+          font-family: var(--font-head);
+          font-size: clamp(2.8rem, 5.5vw, 5rem);
+          font-weight: 800;
+          line-height: 1.05;
+          color: #000000;
+          margin-bottom: 24px;
+          letter-spacing: -0.02em;
+        }
+        .cat-hero-sub {
+          font-family: var(--font-body);
+          font-size: 1.05rem;
+          font-weight: 400;
+          color: rgba(0,0,0,.65);
+          line-height: 1.7;
+          max-width: 420px;
+        }
+        .cat-hero-right {
+          flex: 1 1 50%;
+          overflow: hidden;
+          position: relative;
+        }
+        .cat-hero-right img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center center;
+          display: block;
+        }
 
-        /* ── Catalog hero ── */
-        .catalog-hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 520px;
+        /* ─── CONTROLS ────────────────────────────────── */
+        .cat-controls {
+          position: sticky;
+          top: 80px;
+          z-index: 50;
+          background: rgba(17,17,17,.95);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid var(--border);
+          padding: 0 48px;
+          display: flex;
+          gap: 0;
+          align-items: stretch;
+          min-height: 58px;
+        }
+        .cat-search-wrap {
+          position: relative;
+          display: flex;
+          align-items: center;
+          border-right: 1px solid var(--border);
+          padding-right: 24px;
+          margin-right: 24px;
+          min-width: 240px;
+        }
+        .cat-search-wrap input {
+          background: transparent;
+          border: none;
+          color: #ffffff;
+          font-family: var(--font-body);
+          font-size: 0.85rem;
+          font-weight: 400;
+          outline: none;
+          width: 100%;
+          padding: 0 0 0 28px;
+        }
+        .cat-search-wrap input::placeholder { color: var(--muted2); }
+        .cat-search-icon {
+          position: absolute;
+          left: 0;
+          color: var(--muted2);
+          font-size: 1rem;
+        }
+        .cat-filters {
+          display: flex;
+          gap: 6px;
+          align-items: center;
+          flex-wrap: wrap;
+          padding: 10px 0;
+        }
+        .cat-filter-btn {
+          background: transparent;
+          border: 1px solid transparent;
+          color: var(--muted);
+          padding: 7px 18px;
+          border-radius: 9999px;
+          font-family: var(--font-head);
+          font-size: 0.75rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all .2s var(--ease);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+        .cat-filter-btn:hover { color: #ffffff; border-color: var(--border2); }
+        .cat-filter-btn.active {
+          background: var(--yellow);
+          border-color: var(--yellow);
+          color: #000000;
+        }
+        .cat-results-count {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          font-family: var(--font-body);
+          font-size: 0.75rem;
+          color: var(--muted2);
+          white-space: nowrap;
+          letter-spacing: 0.04em;
+        }
+        .cat-results-count span { color: #ffffff; font-weight: 500; margin: 0 4px; }
+
+        /* ─── MOSAIC GRID ─────────────────────────────── */
+        .cat-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 1px;
+          background: var(--border);
+        }
+
+        /* ─── CARD ────────────────────────────────────── */
+        .cat-card {
+          position: relative;
+          background: var(--bg);
+          overflow: hidden;
+          cursor: pointer;
+          aspect-ratio: 3/4;
+        }
+        .cat-card.hidden { display: none; }
+
+        .cat-card-img {
+          position: absolute;
+          inset: 0;
+        }
+        .cat-card-img img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform .8s var(--ease);
+          display: block;
+        }
+        .cat-card:hover .cat-card-img img { transform: scale(1.06); }
+
+        .cat-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to top,
+            rgba(0,0,0,.90) 0%,
+            rgba(0,0,0,.45) 35%,
+            rgba(0,0,0,.08) 65%,
+            transparent     100%
+          );
+          transition: background .5s var(--ease);
+        }
+        .cat-card:hover .cat-card-overlay {
+          background: linear-gradient(
+            to top,
+            rgba(0,0,0,.96) 0%,
+            rgba(0,0,0,.62) 45%,
+            rgba(0,0,0,.22) 75%,
+            transparent     100%
+          );
+        }
+
+        .cat-card-content {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 28px 22px 22px;
+        }
+        .cat-badge {
+          display: inline-block;
+          font-family: var(--font-body);
+          font-size: 0.6rem;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--yellow);
+          margin-bottom: 8px;
+          opacity: .9;
+        }
+        .cat-card-name {
+          font-family: var(--font-head);
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #ffffff;
+          line-height: 1.2;
+          margin-bottom: 6px;
+          transition: color .3s;
+        }
+        .cat-card-sub {
+          font-family: var(--font-body);
+          font-size: 0.78rem;
+          font-weight: 400;
+          color: rgba(255,255,255,.7);
+          line-height: 1.5;
+          opacity: 0;
+          transform: translateY(8px);
+          transition: opacity .4s var(--ease), transform .4s var(--ease);
+        }
+        .cat-card:hover .cat-card-sub {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* ─── EMPTY ───────────────────────────────────── */
+        .cat-empty {
+          display: none;
+          text-align: center;
+          padding: 100px 20px;
+          font-family: var(--font-head);
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: var(--muted);
+          background: var(--bg);
+        }
+        .cat-empty.show { display: block; }
+
+        /* ─── RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 900px) {
+          .cat-hero {
+            flex-direction: column;
+            min-height: auto;
+          }
+          .cat-hero-right {
+            flex: none;
+            height: 50vw;
+            min-height: 260px;
+            max-height: 420px;
+            order: -1;
+          }
+          .cat-hero-left {
+            padding: 48px 32px 56px;
+          }
+          .cat-hero-title {
+            font-size: clamp(2.2rem, 7vw, 3.4rem);
+          }
         }
         @media (max-width: 768px) {
-            .catalog-hero { grid-template-columns: 1fr; }
-            .catalog-hero-img { display: none; }
+          .cat-hero-left { padding: 40px 20px 52px; }
+          .cat-hero-right { max-height: 280px; }
+          .cat-hero-sub { font-size: 0.95rem; }
+          .cat-controls {
+            padding: 0 16px;
+            flex-wrap: wrap;
+            gap: 0;
+            min-height: auto;
+            top: 64px;
+          }
+          .cat-search-wrap {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            margin: 0;
+            min-width: unset;
+          }
+          .cat-filters { padding: 10px 0; gap: 6px; overflow-x: auto; flex-wrap: nowrap; }
+          .cat-results-count { display: none; }
+          .cat-grid { grid-template-columns: 1fr 1fr; }
+          .cat-card { aspect-ratio: 2/3; }
+          .cat-card-name { font-size: 1rem; }
         }
-        .catalog-hero-text {
-            background: #FFD200;
-            padding: 120px 64px 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        @media (max-width: 480px) {
+          .cat-grid { grid-template-columns: 1fr; }
+          .cat-card { aspect-ratio: 4/5; }
         }
-        @media (max-width: 1024px) {
-            .catalog-hero-text { padding: 100px 40px 60px; }
-        }
-        .catalog-hero-img {
-            position: relative;
-            overflow: hidden;
-        }
-        .catalog-hero-img img {
-            width: 100%; height: 100%; object-fit: cover; object-position: center;
-            transition: transform 8s ease;
-        }
-        .catalog-hero-img:hover img { transform: scale(1.04); }
     </style>
 </head>
 
@@ -141,69 +366,39 @@
         </div>
     </header>
 
-    <!-- ── CATALOG HERO: mitad amarilla + mitad imagen ── -->
-    <div class="catalog-hero mt-20">
-        <div class="catalog-hero-text">
-            <p class="text-black/60 font-bold uppercase tracking-widest text-sm mb-4">Colección 2025</p>
-            <h1 class="text-5xl md:text-6xl font-heading font-extrabold text-black leading-tight mb-6">
-                Catálogo de<br>Revestimientos.
-            </h1>
-            <p class="text-black/70 text-lg leading-relaxed max-w-md">
-                Renovación sin obra, en un día. Explorá nuestra selección completa de vinilos premium importados — maderas, mármoles, cristales, piedras y más.
-            </p>
-            
+    <!-- ── HERO ── -->
+    <section class="cat-hero">
+        <div class="cat-hero-left">
+            <p class="cat-hero-eyebrow">Colección 2025</p>
+            <h1 class="cat-hero-title">Renovación<br>sin obra.</h1>
+            <p class="cat-hero-sub">Transformamos tu espacio en un día. Sin escombros, sin ruidos, sin interrumpir tu vida.</p>
         </div>
-        <div class="catalog-hero-img">
-            <img src="imagenes/l2.png" alt="Revestimientos premium">
+        <div class="cat-hero-right">
+            <img src="imagenes/head.png" alt="Interior CoverAll Deco">
         </div>
-    </div>
+    </section>
 
     <!-- ── CONTROLS (sticky) ── -->
-    <section class="sticky top-20 z-50 bg-[#111]/95 backdrop-blur border-b border-white/5 py-4">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row gap-4 items-center">
-            <div class="relative w-full md:max-w-xs">
-                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#555]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                <input type="text" id="search" class="search-box" placeholder="Buscar material...">
-            </div>
-            <div class="flex flex-wrap gap-2 flex-1">
-                <button class="cat-pill active px-5 py-2 rounded-full border border-white/20 text-sm font-bold" data-cat="ALL">Todos</button>
-                <button class="cat-pill px-5 py-2 rounded-full border border-white/20 text-sm font-bold text-white" data-cat="CRYSTAL">Crystal</button>
-                <button class="cat-pill px-5 py-2 rounded-full border border-white/20 text-sm font-bold text-white" data-cat="WOOD">Wood</button>
-                <button class="cat-pill px-5 py-2 rounded-full border border-white/20 text-sm font-bold text-white" data-cat="ESTAMPADOS">Estampados</button>
-                <button class="cat-pill px-5 py-2 rounded-full border border-white/20 text-sm font-bold text-white" data-cat="PEDRAS">Mármoles</button>
-                <button class="cat-pill px-5 py-2 rounded-full border border-white/20 text-sm font-bold text-white" data-cat="PISOTAK">Pisotak</button>
-                <button class="cat-pill px-5 py-2 rounded-full border border-white/20 text-sm font-bold text-white" data-cat="KROMA">Kroma</button>
-            </div>
-            <span class="count-badge hidden md:block whitespace-nowrap"><span id="count">79</span> materiales</span>
+    <div class="cat-controls" id="catalogo">
+        <div class="cat-search-wrap">
+            <span class="cat-search-icon">⌕</span>
+            <input type="text" id="search" placeholder="Buscar material...">
         </div>
-    </section>
+        <div class="cat-filters">
+            <button class="cat-filter-btn active" data-cat="ALL">Todos</button>
+            <button class="cat-filter-btn" data-cat="CRYSTAL">Crystal</button>
+            <button class="cat-filter-btn" data-cat="WOOD">Wood</button>
+            <button class="cat-filter-btn" data-cat="ESTAMPADOS">Estampados</button>
+            <button class="cat-filter-btn" data-cat="PEDRAS">Mármoles</button>
+            <button class="cat-filter-btn" data-cat="PISOTAK">Pisotak</button>
+            <button class="cat-filter-btn" data-cat="KROMA">Kroma</button>
+        </div>
+        <div class="cat-results-count">Mostrando <span id="count">79</span> materiales</div>
+    </div>
 
-    <!-- ── PRODUCTS GRID ── -->
-    <section class="py-12 md:py-20 bg-[#111]">
-        <div class="container mx-auto px-6">
-            <div class="products-grid" id="grid"></div>
-            <div class="empty-state text-center py-24" id="empty">
-                <p class="text-slate-500 text-xl font-bold">Ningún material coincide con tu búsqueda.</p>
-                <button onclick="resetFilters()" class="mt-6 px-8 py-3 bg-[#FFD200] text-black font-bold rounded-full hover:bg-yellow-300 transition-all">Ver todos</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── CTA ── -->
-    <section class="bg-[#FFD200] py-16">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-                <h2 class="text-3xl md:text-4xl font-heading font-black text-black">¿Encontraste tu textura?</h2>
-                <p class="text-black/70 mt-2 text-lg">Pedí tu presupuesto sin cargo — te contactamos en menos de 1 hora.</p>
-            </div>
-            <a href="https://wa.me/5491130212683" target="_blank" class="inline-flex items-center gap-3 bg-black text-[#FFD200] font-black py-4 px-10 rounded-full text-lg hover:bg-slate-800 transition-all whitespace-nowrap flex-shrink-0">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.892 6.991c-.002 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Consultar por WhatsApp
-            </a>
-        </div>
-    </section>
+    <!-- ── MOSAIC GRID ── -->
+    <div class="cat-grid" id="grid"></div>
+    <div class="cat-empty" id="empty">Ningún material coincide con tu búsqueda.</div>
 
     <!-- ── FOOTER ── -->
     <footer class="bg-black text-white py-20 border-t border-white/5">
@@ -327,63 +522,51 @@
       {id:"kroma_malbec",cat:"KROMA",img:"imagenes/catalogo/kroma_malbec.jpg",name:"Malbec",sub:"Vino oscuro para espacios de carácter propio"}
     ];
 
-    const CAT_LABELS = {CRYSTAL:'Crystal',WOOD:'Wood',ESTAMPADOS:'Estampados',PEDRAS:'Mármoles',PISOTAK:'Pisotak',KROMA:'Kroma'};
-    let activeCat = 'ALL', query = '';
+    const CAT_LABELS = {CRYSTAL:"Crystal",WOOD:"Wood",ESTAMPADOS:"Estampados",PEDRAS:"Mármoles",PISOTAK:"Pisotak",KROMA:"Kroma"};
+    let activeCat = "ALL", query = "";
 
     function getFiltered() {
       let list = PRODUCTS;
-      if (activeCat !== 'ALL') list = list.filter(p => p.cat === activeCat);
-      if (query) list = list.filter(p => p.name.toLowerCase().includes(query) || (CAT_LABELS[p.cat]||'').toLowerCase().includes(query));
+      if (activeCat !== "ALL") list = list.filter(p => p.cat === activeCat);
+      if (query) list = list.filter(p => p.name.toLowerCase().includes(query) || (CAT_LABELS[p.cat]||"").toLowerCase().includes(query));
       return list;
     }
 
     function render() {
       const list = getFiltered();
-      const grid = document.getElementById('grid');
-      const empty = document.getElementById('empty');
-      document.getElementById('count').textContent = list.length;
-      if (!list.length) { grid.innerHTML = ''; empty.classList.add('show'); return; }
-      empty.classList.remove('show');
+      const grid = document.getElementById("grid");
+      const empty = document.getElementById("empty");
+      document.getElementById("count").textContent = list.length;
+      if (!list.length) { grid.innerHTML = ""; empty.classList.add("show"); return; }
+      empty.classList.remove("show");
       grid.innerHTML = list.map(p => `
-        <div class="prod-card" onclick="window.open('https://wa.me/5491130212683?text=Hola!%20Me%20interesa%20el%20material%20${encodeURIComponent(p.name)}','_blank')">
-          <img src="${p.img}" alt="${p.name}" loading="lazy">
-          <div class="prod-card-overlay"></div>
-          <div class="prod-card-body">
-            <span class="prod-badge">${CAT_LABELS[p.cat]||p.cat}</span>
-            <div class="prod-name">${p.name}</div>
-            <div class="prod-sub">${p.sub}</div>
-            <div class="prod-wa">Consultar por WhatsApp →</div>
+        <div class="cat-card" onclick="window.open('https://wa.me/5491130212683?text=Hola!%20Me%20interesa%20el%20material%20${encodeURIComponent(p.name)}','_blank')">
+          <div class="cat-card-img">
+            <img src="${p.img}" alt="${p.name}" loading="lazy"
+                 onerror="this.src='imagenes/catalogo/placeholder.jpg'">
           </div>
-        </div>`).join('');
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-content">
+            <span class="cat-badge">${CAT_LABELS[p.cat] || p.cat}</span>
+            <div class="cat-card-name">${p.name}</div>
+            <div class="cat-card-sub">${p.sub}</div>
+          </div>
+        </div>
+      `).join("");
     }
 
-    function resetFilters() {
-      activeCat = 'ALL'; query = '';
-      document.getElementById('search').value = '';
-      document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-      document.querySelector('[data-cat="ALL"]').classList.add('active');
-      render();
-    }
-
-    document.querySelectorAll('.cat-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    document.querySelectorAll(".cat-filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".cat-filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
         activeCat = btn.dataset.cat;
         render();
       });
     });
 
-    document.getElementById('search').addEventListener('input', e => {
+    document.getElementById("search").addEventListener("input", e => {
       query = e.target.value.trim().toLowerCase();
       render();
-    });
-
-    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.remove('translate-x-full');
-    });
-    document.getElementById('mobile-menu-close').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.add('translate-x-full');
     });
 
     render();
