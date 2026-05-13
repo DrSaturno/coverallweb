@@ -953,6 +953,33 @@
             btn.classList.add('border-yellow-400');
         }
     </script>
+    <!-- Toast: formulario enviado -->
+    <div id="toast-enviado" style="display:none;position:fixed;bottom:32px;left:50%;transform:translateX(-50%);z-index:9999;background:#000;color:#FFD200;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;padding:18px 36px;border-radius:9999px;box-shadow:0 8px 40px rgba(0,0,0,.35);border:2px solid #FFD200;white-space:nowrap;animation:slideUp .4s ease;">
+        ✓ &nbsp;¡Consulta enviada! Te contactamos pronto.
+    </div>
+    <style>
+        @keyframes slideUp {
+            from { opacity:0; transform:translateX(-50%) translateY(20px); }
+            to   { opacity:1; transform:translateX(-50%) translateY(0); }
+        }
+    </style>
+    <script>
+        if (new URLSearchParams(window.location.search).get('enviado') === 'ok') {
+            const t = document.getElementById('toast-enviado');
+            t.style.display = 'block';
+            // Scroll suave a la sección de contacto
+            document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Ocultar después de 6 segundos
+            setTimeout(() => {
+                t.style.animation = 'none';
+                t.style.transition = 'opacity .5s';
+                t.style.opacity = '0';
+                setTimeout(() => t.style.display = 'none', 500);
+            }, 6000);
+            // Limpiar la URL sin recargar
+            window.history.replaceState({}, '', window.location.pathname);
+        }
+    </script>
 </body>
 
 </html>
